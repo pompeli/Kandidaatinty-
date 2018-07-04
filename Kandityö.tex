@@ -1,0 +1,78 @@
+
+\documentclass[finnish, 12pt, a4paper, elec, utf8, a-1b, online]{aaltothesis}
+
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{natbib}
+
+\usepackage{amsfonts,amssymb,amsbsy}
+
+\university{Aalto-yliopisto}
+\school{Sähkötekniikan korkeakoulu}
+
+\degreeprogram{Sähkötekniikan kandidaattiohjelma}
+
+\major{Bioinformaatioteknologia}
+
+\code{ELEC3016}
+
+\univdegree{BSc}
+
+\thesisauthor{Joonas Laitinen}
+%%
+\thesistitle{EEG/MEG-mittausdatan analyysi aika- ja taajuusalueella MUSIC-algoritmilla}
+
+\place{Espoo}
+ 
+\date{15.9.2018}
+
+\supervisor{TkT Markus Turunen}
+
+\advisor{Prof.\ Jukka Sarvas}
+
+\uselogo{aaltoRed}{!}
+
+\keywords{MEG, EEG, MUSIC}
+
+\thesisabstract{
+Tähän tulee kirjoittaa tiivistelmä, että se jää osaksi PDF:n metadataa. Tämän sisältö siirtyy automaattisesti tiivistelmän osioon.
+}
+
+\copyrighttext{Copyright \noexpand\copyright\ \number\year\ \ThesisAuthor}
+{Copyright \copyright{} \number\year{} \ThesisAuthor}
+
+
+\begin{document}
+	
+\makecoverpage{}
+
+\begin{abstractpage}[finnish]
+	\abstracttext{}
+\end{abstractpage}
+
+\newpage
+
+%% Sisällysluettelo
+\thesistableofcontents
+
+\clearpage
+
+\input{Johdanto.tex}
+
+\clearpage
+\section{MUSIC-algoritmi}
+\input{MUSIC.tex}
+\subsection{MUSIC-algoritmin simulointi}
+\section{MUSIC-algoritmin eri versiot}
+\subsection{RAP-MUSIC}
+\subsection{TRAP-MUSIC}
+\section{Mittausdatan analyysi MUSIC-algoritmilla}
+\section{Tulokset}
+\section{Yhteenveto}
+\clearpage
+
+
+\bibliographystyle{agsm}    % Käytettävä viittausjärjestelmä, agsm = harvard
+\bibliography{Lahteet}      % BibTeX-tietokanta, lahteet tiedoston nimi
+
+\end{document}

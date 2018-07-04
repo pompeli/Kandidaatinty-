@@ -1,0 +1,314 @@
+%%
+%% MINKÄ PDF/A -standardin mukaan teen opinnäytetyöni?
+%%
+%% Ensisijaisesti PDF/A-1b -standardin mukaan. Kuvaajat ja kuvat mitä
+%% tyypillisesti käytetään opinnäytetyössä eivät tarvitse
+%% läpinäkyvyysominaisuuksia. Perus '2D' -näkymä on riittävä. Opinnäytetyössä
+%% käytettävät fontit on määritelty tässä pohjassa eikä niitä pidä muuttaa. Jos
+%% käytät kuvia, jossa läpikäkyvyysominaisuuksillä on merkitystä, käytä PDF/A-2b
+%% -standardia. Älä käytä PDF/A-3b -standardia opinnäytetyössäsi.
+%%
+%%
+%% MITKÄ kuvaformaatteja voin käyttää PDF/A-tiedoston tekemisessä?
+%%
+%% Kun käytät pdflatexia työsi kääntämisessä, käytä jpg-, png- tai pdf-formmaatia.
+%% Pdf-muotoisten kuvien kanssa voi tulla ongelmia PDF/A -yhteesopivuuden kanssa.
+%% Älä käytä PDF/A-formaattia kuvatiedostoissa.
+%% Jos kuitenkin käytät latexia työsi kääntämisessä, ainoa sallittu kuvaformaatti
+%% on eps. ÄLÄ käytä ps-formaattia kuvissasi.
+
+%% KÄYTÄ näistä yhtä:
+%% * ensimmäinen, jos käytät pdflatexia, joka kääntää tekstin suoraan
+%%   pdf/a-tiedostoksi ja haluat julkaista opinnäytetyösi verkossa
+%% * toinen, jos haluat tulostaa opinnäytteesi kansitettavaksi
+%% * kolmas jos haluat tuottaa ps-tiedostoa ja siitä pdf/a:ta
+%%
+\documentclass[finnish, 12pt, a4paper, elec, utf8, a-1b, online]{aaltothesis}
+%\documentclass[finnish, 12pt, a4paper, elec, utf8, a-1b]{aaltothesis}
+%\documentclass[finnish, 12pt, a4paper, elec, dvips, online]{aaltothesis}
+%% Kirjoita y.o. \documentclass optioiksi
+%% korkeakoulusi näistä: arts, biz, chem, elec, eng, sci
+%% editorisi käyttämä merkkikoodaustapa: utf8, latin1
+%% opinnäytetyön kieli: finnish, english, swedish
+%% tee arkistointikelpoista PDF/A-1b, PDF/A-2b tai PDF/A-3b pdf-tiedosto: a-1b,
+%%                         a-2b, a-3b
+%%                         (tavallinen pdf-tiedosto syntyy ilman a-*b optiota)
+%% verkkoon menevä symmetrinen taitto ja sinisellä hypertekstillä: online  
+%%                         (oletusarvo on leveä marginaali sivun sidonta puolella
+%%                         ja musta hyperteksti)
+%% kaksipuolinen tulostus: twoside (oletusarvo on yksipuolinen tulostus)
+%%
+
+%% Käytä yhtä näistä, jos kirjoitat englanniksi. Katso englanninokset
+%% tiedostosta thesistemplate.tex.
+%\documentclass[english, 12pt, a4paper, elec, utf8, a-1b, online]{aaltothesis}
+%\documentclass[english, 12pt, a4paper, elec, utf8, a-1b]{aaltothesis}
+%\documentclass[english, 12pt, a4paper, elec, dvips, online]{aaltothesis}
+
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{natbib}
+
+%% Matematiikan fontteja, symboleja ja muotoiluja lisää, näitä tarvitaan usein 
+\usepackage{amsfonts,amssymb,amsbsy}
+
+%% Korjaa vastaamaan korkeakouluasi, jos automaattisesti asetettu nimi on 
+%% virheellinen 
+%%
+%% Change the school field to specify your school if the automatically 
+%% set name is wrong
+\university{aalto-yliopisto}
+\school{Elämän korkeakoulu}
+
+%% VAIN KANDITYÖLLE: Korjaa seuraava vastaamaan koulutusohjelmaasi
+%%
+\degreeprogram{Sähkötekniikan kandidaattiohjelma}
+%%
+
+%% Pääaineesi (kandi) tai professuuri (DI/MSc)
+\major{Bioinformaatioteknologia}
+
+%% Pääainekoodi (kandityö) tai professuurikoodi (DI/MSc- tai lisensiaatintyölle)
+%%
+\code{ELEC3016}
+%%
+
+%% 
+%% Valitse yksi näistä kolmesta
+%%
+\univdegree{BSc}
+%\univdegree{MSc}
+%\univdegree{Lic}
+%%
+
+%% Oma nimi
+%%
+\thesisauthor{Teemu Teekkari}
+%%
+
+%% Opinnäytteen otsikko tulee tähän ja mahdollisesti uudelleen englannin- tai
+%% ruostinkielisen abstraktin yhteydessä. Älä tavuta otsikkoa ja vältä liian
+%% pitkää otsikkotekstiä. Jos latex ryhmittelee otsikon huonosti, voit joutua
+%% pakottamaan rivinvaihdon \\ kontrollimerkillä.
+%% Tällöin...
+%% Muista että otsikkoja ei tavuteta! 
+%% Jos otsikossa on ja-sana, se ei jää rivin viimeiseksi sanaksi vaan aloittaa
+%% uuden rivin.
+%% Anna ostikko uudelleen ilman rivinvaihtomerkkiä optionaalisena argumenttina
+%% hakasuluissa. Näin tehdään, koska otsikko on osaa pdf/a-tiedostossa olevaa
+%% metadataa, ja metadatassa ei saa olla rivinvaihtomerkkiä.
+%%
+\thesistitle{Opinnäyte}
+%\thesistitle[Opinnäytteen otsikko]{Opinnäyteen\\ otsikko}
+%%
+
+%%
+\place{Espoo}
+%%
+
+%% Kandidaatintyön päivämäärä on sen esityspäivämäärä! 
+%% 
+\date{12.7.2016}
+%%
+
+%% Kandidaattiseminaarin vastuuopettaja tai diplomityön valvoja.
+%% Huomaa tittelissä "\" -merkki pisteen jälkeen, ennen välilyöntiä ja
+%% seuraavaa merkkijonoa. 
+%% Näin tehdään, koska kyseessä ei ole lauseen loppu, jonka jälkeen tulee 
+%% hieman pidempi väli vaan halutaan tavallinen väli.
+%%
+\supervisor{TkT Matti Meikäläinen}
+%%
+
+%% Kandidaatintyön ohjaaja(t) tai diplomityön ohjaaja(t). Ohjaajia saa
+%% olla korkeintaan kaksi.
+%% 
+\advisor{Prof.\ Tuomo Tietäväinen}
+%\advisor{TkT Olli Ohjaaja}
+%\advisor{DI Tina Tutkija}
+%%
+
+%% Aaltologo: syntaksi:
+%% \uselogo{aaltoRed|aaltoBlue|aaltoYellow|aaltoGray|aaltoGrayScale}{?|!|''}
+%% Logon kieli on sama kuin dokumentin kieli
+%%
+\uselogo{aaltoRed}{!}
+%%
+
+%% Suomenkielinen tiivistelmä:
+%% Kaikki tiivistelmässä tarvittava tieto (nimesi, työnnimi, jne.) käytetään
+%% niin kuin se on yllä määritelty.
+%% Tiivistelmän avainsanat:
+%% Huom! Avainsanat erotetaan toisistaan \spc -makrolla
+%%
+\keywords{}
+%%
+
+%% Tiivistelmän tekstiosa. Tämä teksti sisältyy pdf-tiedoston metadataa ja tulee
+%% myös tiivistelmälomakkeeseen.
+%% Kopioidaan tähän tiivistelmä tiedoston sisältö
+\thesisabstract{
+Tähän tulee kirjoittaa tiivistelmä, että se jää osaksi PDF:n metadataa. Tämän sisältö siirtyy automaattisesti tiivistelmän osioon.
+}
+
+
+
+
+%%
+
+%% Tekijänoikeusteksti. Tekijänoikeus on tekijällä riippumatta siitä onko
+%% copyright -merkintä näkyvissä vai ei. Halutessasi voit jakaa työsi Creative 
+%% Commons -lisensillä (katso creativecommons.org), jolloin lisenssitekstin on
+%% oltava näkyvissä. Kirjoita tähän haluamasi tekijänoikeustektin. Se kirjautuu
+%% myös pdf-tiedoston metadataan.
+%% Syntaksi:
+%% \copyrigthtext{metadatateksti}{sivulle näkyviin tuleva teksti}
+%%
+%% A.o. metadataan menevässä tekstissä on käytettävä \noexpand -makroa ennen
+%% \copyright -erikoismerkkiä ja lisäksi makrot (tässä \copyright ja \year) on
+%% erotettava seuraavasta tekstistä \ -merkillä (välilyöntimerkki).
+%% \copyrighttext-makron argumentissa olevat makrot automaattisesti hakevat
+%% vuosiluvun ja tekijän nimi.
+%% (Huom! \ThesisAuthor on aaltothesis.cls -tyylitiedoston sisäinen makro).
+%% Toki saman tekstin olisi voinut kirjoittaa yksinkertaisesti näin:
+%% \copyrighttext{Copyright \noexpand\copyright\ 2018 Teemu Teekkari}
+%% {Copyright \copyright{} 2018 Teemu Teekkari}
+%%
+\copyrighttext{Copyright \noexpand\copyright\ \number\year\ \ThesisAuthor}
+{Copyright \copyright{} \number\year{} \ThesisAuthor}
+%%
+
+%% Voit estää LaTeXia kirjoittamasta xmpdata-tiedostoon (sisältää pdf-tiedostoon
+%% kirjoitettavaa metadataa) asettamalla writexmpdatafile lipun arvoksi 'false'.
+%% Tämä mahdollistaa sen, että voit kirjoittaa metadataa suoraan oikeassa
+%% muodossa tiedostoon opinnaytepohja.xmpdata.
+%%
+%\setboolean{writexmpdatafile}{false}
+%%
+
+
+
+%% Kaikki mikä paperille tulostuu, on tämän jälkeen
+\begin{document}
+	
+%% Tehdään kansilehti
+%%
+\makecoverpage{}
+
+%% Tehdään tekijänoikeusteksti näkyväksi.
+%% Halutessasi voit jättää tekijänoikeustekstin pois luettavasta pdf-tiedostosta. 
+%% Tämä voi tuntua hyvältä ajatukselta paperille tulostetulla versiossa eteenkin,
+%% jos sivun ainoa teksti on "Copyright (c) vvvv Teemu Teekkari". Suositus on
+%% kuitenkin jättää teksti näkyviin.
+%%
+%% \makecopyrightpage{}
+
+%% Suomenkielinen tiivistelmä
+%% Kaikki tiivistelmässä tarvittava tieto (nimesi, työnnimi, jne.) käytetään
+%% niin kuin se on yllä määritelty.
+%%
+
+
+%% Tiivistelmän tekstiosa
+
+%% \thesisabstract -makrossa kirjoitettu teksti on tallennettu \abstractext 
+%% -makrosa jolloin voit siirtää metadataan menevä teksti sellaisenaan näin:
+%%
+\begin{abstractpage}[finnish]
+	\abstracttext{}
+\end{abstractpage}
+
+\newpage
+
+%% Sisällysluettelo
+\thesistableofcontents
+
+%% Opinnäytteessä jokainen osa alkaa uudelta sivulta, joten \clearpage
+
+\clearpage
+
+%% Johdanto haetaan erillisestä tiedostosta
+
+\input{Johdanto.tex}
+
+%% Opinnäytteessä jokainen osa alkaa uudelta sivulta, joten \clearpage
+
+\clearpage
+
+%% Seuraava osio haetaan erillisestä tiedostosta
+
+\input{AikaisempiTutkimus.tex}
+
+%% Opinnäytteessä jokainen osa alkaa uudelta sivulta, joten \clearpage
+
+\clearpage
+
+%% Seuraava osio haetaan erillisestä tiedostosta
+
+\input{testi.tex}
+
+%% Opinnäytteessä jokainen osa alkaa uudelta sivulta, joten \clearpage
+
+\clearpage
+
+
+%% Osan hienojaottelua alaosiin, eikä välttämättä edes tarpeen, tässä vain
+%% esimerkkinä. Käytä harkintasi mukaan osan jaottelua, joskus alaotsikot
+%% selventävät asioita ja joskus vain sirpaloittavat tarpeettomasti tekstiä.
+%%  Jaottelu menee seuraavasti:
+%% \section{osan otsikko} 
+%% \subsection{alaotsikko}
+%% \subsubsection{ala-alaotsikko}
+%% Tätä pitemälle ei pidä jaotella. 
+
+%% Lähteet
+
+\bibliographystyle{agsm}    % Käytettävä viittausjärjestelmä, agsm = harvard
+\bibliography{Lahteet}      % BibTeX-tietokanta, lahteet tiedoston nimi
+
+
+%% Liitteet
+%% Sivulaskurin viilausta opinnäytteen vaatimusten mukaan. Näkyy lähinnä
+%% tiivistelmä lomakkeen sivunumerokentässä:
+%% tekstin sivujen määrä + liiteiden sivujen määrä.
+%% Poista a.o. \clearpage-, \storeinipagenumber- ja \thesisappendix -makrot, jos
+%% liiteitä ei ole.
+\clearpage
+\storeinipagenumber
+
+\thesisappendix
+
+\section{Esimerkki liitteestä\label{LiiteA}}
+
+Liitteet eivät ole opinnäytteen kannalta välttämättömiä ja 
+opinnäytteen tekijän on 
+kirjoittamaan ryhtyessään hyvä ajatella pärjäävänsä ilman liitteitä.
+Kokemattomat kirjoittajat, jotka ovat huolissaan
+tekstiosan pituudesta, paisuttavat turhan 
+helposti liitteitä pitääkseen tekstiosan pituuden annetuissa rajoissa.
+Tällä tavalla ei synny hyvää opinnäytettä.   
+
+Liite on itsenäinen kokonaisuus, vaikka se täydentääkin tekstiosaa.
+Liite ei siten ole pelkkä listaus, kuva tai taulukko, vaan 
+liitteessä selitetään aina sisällön laatu ja tarkoitus. 
+
+Liitteeseen voi laittaa esimerkiksi listauksia. Alla on 
+listausesimerkki tämän liitteen luomisesta. 
+
+%% Verbatim-ympäristö ei muotoile tai tavuta tekstiä. Fontti on monospace.
+%% Verbatim-ympäristön sisällä annettuja komentoja ei LaTeX käsittele. 
+%% Vasta \end{verbatim}-komennon jälkeen jatketaan käsittelyä.
+\begin{verbatim}
+	\clearpage
+	\appendix
+	\addcontentsline{toc}{section}{Liite A}
+	\section*{Liite A}
+	...
+	\thispagestyle{empty}
+	...
+	tekstiä
+	...
+	\clearpage
+\end{verbatim}
+
+\end{document}

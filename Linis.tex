@@ -1,0 +1,30 @@
+\section{Lineaarialgebra}
+Vektoriavaruuden $\mathbf{V}$ kaikki pisteet voidaan esittää keskenään lineearisesti riippumattomien vektoreiden $\{\mathbf{a}_1,...,\mathbf{a}_n\}$ avulla. Tällöin vektorit $\{\mathbf{a}_1,...,\mathbf{a}_n\}$ muodostavat avaruuden $\mathbf{V}$ kannan.
+
+%aliavaruudet
+
+Olkoon matriisi $\mathbf{A}\in \mathbb{R}^{m\times n}$, jonka rivien määrä on $\mathit{m}$ ja sarakkeiden $\mathit{n}$. 
+
+%käänteismatriisi
+
+Singulaariarvohajotelman avulla matriisi voidaan esittää sen ominaisarvojen ja ortonormaalien matriisien avulla
+
+\begin{equation}
+    \mathbf{A = UDV^T,}
+\end{equation}
+jossa matriisin $\mathbf{A}$ ominaisarvot ovat matriisin $\mathbf{D}$ diagonaalilla. 
+
+Jos matriisi $\mathbf{A}$ on neliömatriisi ja sen determinantti $\det(A)\ne 0$, niin sillä on käänteismatriisi $\mathbf{A^{-1}}$
+
+%pseudoinverse
+Pseudokäänteismatriisi $\mathbf{A^{\dagger}}$ on yleistys matriisin käänteismatriisille. Tämä joudutaan muodostamaan silloin, kun matriisi $\mathbf{A}$ ei ole kääntyvä. Pseudokäänteismatriisi saadaan muodostettua singulaariarvohajotelman avulla
+\begin{equation}
+    \mathbf{A^{\dagger} = VD^{\dagger}U^T}
+\end{equation}
+
+%projektio
+Projektio signaalialiavaruuteen saadaan kaavalla
+\begin{equation}
+    \mathbf{\Pi_{sg} = AA^{\dagger}}
+\end{equation}
+

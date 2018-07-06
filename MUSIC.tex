@@ -1,15 +1,22 @@
 \section{MUSIC-algoritmi}
-\subsection{Matriisilaskenta}
-Olkoon matriisi $\mathbf{A} \in \mathbb{R^{\text{m}\times\text{n}}}$, joka muodostuu keskenään lineaarisesti riippumattomattomista pystyvektoreista $\mathbf{a}_i$. Nämä pystyvektorit virittävät matriisin \textbf{A} aliavaruuden
-\[span(\mathbf{A}) = span(\mathbf{a_1},...,\mathbf{a_n})\]
+\cite{Schmidt1986MultipleEstimation} kehitti lähteen paikannusmenetelmän, mikä tunnetaan nimellä Multiple Signal Classification (MUSIC). MUSIC-algoritmi perustuu mittausdatan jakamiseen keskenään ortogonaalisiin signaali- ja kohina-aliavaruuksiin, jonka jälkeen tarkistetaan potentiaalisen lähteen topografian kuuluminen signaaliavaruuteen \cite{Mosher1999SourceMUSIC}.
 
-\subsection{MUSIC}
-MUSIC-algoritmi on yksi keino saada tietoa aivojen aktiivisuudesta. Se perustuu
+Olkoon mittauksista saatu data kerättynä matriisiin $\mathbf{Y}\in \mathbb{R}^{m\times N}$, jossa $\mathit{m}$ on mittausanturien määrä ja $\mathit{N}$ mittausten lukumäärä. Matriisilla $\mathbf{Y}$ on muoto
+
+\begin{equation}
+    \mathbf{Y=AS+\eta},
+\end{equation}
+jossa $\mathbf{A}$ on sekoitusmatriisi, $\mathbf{S}$ ajankulkumatriisi ja $\mathbf{\eta}$ mittauskohinaa. 
+
+\begin{equation}
+    \mu(\mathbf{p}) = \frac{||\mathbf{P}_s\mathbf{l(p)}||^2}{||\mathbf{l(p)}||^2}    
+\end{equation}
 
 
+\subsection{RAP-MUSIC}
 
+\subsubsection{RAP-dilemma}
+RAP-MUSICin paikannusfunktio saattaa löytää lähdepisteitä jo löydettyjen lähteiden läheltä, mikä johtuu siitä, ettei algoritmi pysty poistamaan topografiaa löydettyjen dipolien lähettyviltä \cite{Makela2018TruncatedLocalization}. Tätä RAP-dilemmaa havaitaan varsinkin kohinattomalla ja valkoisen kohinan datalla. Tämän algoritmin virheen korjaamiseksi \cite{Makela2018TruncatedLocalization} kehittivät ratkaisun, joka nimettiin TRAP-MUSICiksi. 
 
-\subsubsection{RAP}
-
-
-\subsubsection{TRAP}
+\subsection{TRAP-MUSIC}
+Truncated RAP-MUSIC (TRAP-MUSIC) on muuten samankaltainen rekursiivinen algoritmi kuin RAP-MUSIC, mutta TRAP-MUSICin paikannusfunktioon on tehty pieni muutos: kun uusi lähde on löydetty, tämä kohta projisoidaan pois signaaliavaruudesta ja jäljellä oleva signaaliavaruus typistetään vastaamaan jäljellä olevien lähteiden arvioitua määrää \cite{Makela2018TruncatedLocalization}.

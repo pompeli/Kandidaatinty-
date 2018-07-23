@@ -1,0 +1,43 @@
+\subsection{RAP-MUSIC}
+RAP-MUSIC on MUSIC-algoritmin iteratiivinen versio, jossa lähteet paikannetaan yksitellen. Lähde löydetään paikannusfunktion maksimina ja tämän topografia projisoidaan pois signaaliavaruudesta \citep{Mosher1999SourceMUSIC}. 
+
+RAP-MUSIC alkaa tavallisen MUSIC-algoritmin tapaan löytäen ensimmäisen maksimipisteen estimaatin \textbf{\^p}, jolla on topografia \textbf{l(\^p)}. Iteraatiokierrosta \textit{k}+1 varten muodostamme projektio-operaattorin, joka projisoi topografian \textbf{l(\^p)} pois signaaliavaruudesta
+
+\begin{equation}
+    \mathbf{Q}_k = \mathbf{I}-\mathbf{B}_k\mathbf{B}_k^\dagger,
+\end{equation}
+jossa $\mathbf{B}_k = [\mathbf{l(p}_1),...,\mathbf{l(p}_{k})]$ sisältää löydettyjen lähteiden topografiat. Muunnettu signaaliavaruus on täten $\text{span}(\mathbf{Q}_k\mathbf{U}(:,1:n))$. Tästä muunnetusta signaaliavaruudesta muodostetaan singulaariarvohajotelma
+
+\begin{equation}
+    \mathbf{Q}_k\mathbf{U}(:,1:n) = \mathbf{U}_k\mathbf{D}_k\mathbf{V}_k^T
+\end{equation}
+
+Muodostetaan projektio signaaliavaruuteen (kaava \ref{eq:6})
+\begin{equation}
+    \mathbf{P}_k = \mathbf{Q}_k\mathbf{U}(:,1:n)(\mathbf{Q}_k\mathbf{U}(:,1:n))^{\dagger} = \mathbf{U}_k(1:n)\mathbf{U}_k(1:n)^T
+\end{equation}
+
+Kiinnitetyn orientaation paikannusfunktio on
+\begin{equation}
+    \mathbf{\mu_k(p)} = \frac{||\mathbf{P}_k\mathbf{Q}_k\mathbf{l(p)}||^2}{||\mathbf{Q}_k\mathbf{l(p)}||^2}
+    \begin{cases}
+    =1\text{, jos p on lähde}\\
+    <1\text{, jos p ei ole lähde}
+     \end{cases}
+\end{equation}
+
+Vapaan orientaation paikannusfunktio saadaan edellisen kappaleen mukaisesti
+\begin{equation}
+    \mathbf{\mu_k(p)} = \max_{||\eta||=1} \frac{||\mathbf{P}_k\mathbf{Q}_k\mathbf{L(p)\eta}||^2}{||\mathbf{Q}_k\mathbf{L(p)\eta}||^2}
+    \begin{cases}
+    =1\text{, jos p on lähde}\\
+    <1\text{, jos p ei ole lähde}
+     \end{cases}
+\end{equation}
+
+
+
+\subsubsection{RAP-dilemma}
+RAP-MUSICin paikannusfunktio saattaa löytää lähdepisteitä jo löydettyjen lähteiden läheltä. Tämä johtuu siitä, ettei algoritmi pysty poistamaan topografiaa oikein löydettyjen dipolien lähettyviltä. Tätä RAP-dilemmaa havaitaan varsinkin kohinattomalla ja valkoisen kohinan datalla. \citep{Makela2018TruncatedLocalization} 
+
+RAP-dilemman poistamiseksi \cite{Makela2018TruncatedLocalization} kehittivät TRAP-MUSIC-algoritmin, joka poistaa virhettä löydettyjen lähteiden alueelta.

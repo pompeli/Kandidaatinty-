@@ -4,13 +4,6 @@
 
 \input{MUSIC.tex}
 
-\subsection{RAP-MUSIC}
-RAP-MUSIC on MUSIC-algoritmin iteratiivinen versio, jossa lähteet paikannetaan yksitellen ja löydetyn lähteen topografia projisoidaan pois signaaliavaruudesta \citep{Mosher1999SourceMUSIC}. 
+\input{RAPMUSIC.tex}
 
-\subsubsection{RAP-dilemma}
-RAP-MUSICin paikannusfunktio saattaa löytää lähdepisteitä jo löydettyjen lähteiden läheltä. Tämä johtuu siitä, ettei algoritmi pysty poistamaan topografiaa oikein löydettyjen dipolien lähettyviltä. Tätä RAP-dilemmaa havaitaan varsinkin kohinattomalla ja valkoisen kohinan datalla. \citep{Makela2018TruncatedLocalization} 
-
-RAP-dilemman poistamiseksi \cite{Makela2018TruncatedLocalization} kehittivät TRAP-MUSIC-algoritmin, joka poistaa virhettä löydettyjen lähteiden alueelta.
-
-\subsection{TRAP-MUSIC}
-TRAP-MUSIC (Truncated RAP-MUSIC) on samankaltainen rekursiivinen algoritmi kuin RAP-MUSIC, mutta TRAP-MUSIC:in paikannusfunktioon on tehty pieni muutos: kun uusi lähde on löydetty, tämä kohta projisoidaan pois signaaliavaruudesta ja jäljellä oleva signaaliavaruus typistetään vastaamaan jäljellä olevien lähteiden arvioitua määrää \citep{Makela2018TruncatedLocalization}.
+\input{TRAPMUSIC.tex}

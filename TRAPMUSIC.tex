@@ -1,0 +1,26 @@
+\subsection{TRAP-MUSIC}
+TRAP-MUSIC (Truncated RAP-MUSIC) on samankaltainen rekursiivinen algoritmi kuin RAP-MUSIC, mutta TRAP-MUSIC:in paikannusfunktioon on tehty pieni muutos: kun uusi lähde on löydetty, tämä kohta projisoidaan pois signaaliavaruudesta ja jäljellä oleva signaaliavaruus typistetään vastaamaan jäljellä olevien lähteiden arvioitua määrää \citep{Makela2018TruncatedLocalization}.
+
+Iteraatiokierroksen $k-1$ jälkeen signaaliavaruuteen jää $n-k+1$ lähdettä. Täten signaaliavaruutta voidaan typistää muuttamalla projektio-operaattoria
+
+\begin{equation}
+    \mathbf{P}_{\text{TRAP}} = \mathbf{U}_k(1:n-k+1)\mathbf{U}_k(1:n-k+1)^T
+\end{equation}
+
+TRAP-MUSICin paikannusfunktio kiinnitetyllä orientaatiolla
+\begin{equation}
+    \mathbf{\mu_k(p)} = \frac{||\mathbf{P}_{\text{TRAP}}\mathbf{Q}_k\mathbf{l(p)}||^2}{||\mathbf{Q}_k\mathbf{l(p)}||^2}
+    \begin{cases}
+    =1\text{, jos p on lähde}\\
+    <1\text{, jos p ei ole lähde}
+     \end{cases}
+\end{equation}
+
+Vapaalla orientaatiolla
+\begin{equation}
+    \mathbf{\mu_k(p)} = \max_{||\eta||=1} \frac{||\mathbf{P}_{\text{TRAP}}\mathbf{Q}_k\mathbf{L(p)\eta}||^2}{||\mathbf{Q}_k\mathbf{L(p)\eta}||^2}
+    \begin{cases}
+    =1\text{, jos p on lähde}\\
+    <1\text{, jos p ei ole lähde}
+     \end{cases}
+\end{equation}

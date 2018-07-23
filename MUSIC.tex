@@ -1,71 +1,74 @@
-\section{Teoria}
+\subsection{MUSIC-algoritmi}
+\cite{Schmidt1986MultipleEstimation} kehitti MUSIC-algoritmin (Multiple Signal Classification), joka perustuu mittausdatan jakamiseen keskenään ortogonaalisiin signaali- ja kohina-aliavaruuksiin, jonka jälkeen tarkistetaan potentiaalisen lähdepisteen topografian kuuluminen signaaliavaruuteen \citep{Mosher1999SourceMUSIC}. Algoritmissa lähteet kuvataan sähköisinä dipoleina ja se vaatii päämalliin tehdyn "forward modelin" (suomennos?).
 
-\subsection{Lineaarialgebra}
-Vektoriavaruuden $\mathbb{R}^m$ aliavaruuden $\mathbb{V}$ virittävät keskenään lineaarisesti riippumattomat vektorit $\{\mathbf{a_1,...,a_n}\}$, jota merkitään $\text{span}(\mathbf{a_1,...,a_n})$. Tällöin vektorit $(\mathbf{a_1,...,a_n})$ muodostavat aliavaruuden $\mathbb{V}$ kannan. 
+Dipolit aivoissa voidaan olettaa kiinnitetyiksi eli niiden sijainnit eivät muutu ajan suhteen. MUSIC-algoritmit voidaan jakaa kahteen kategoriaan riippuen, miten dipolien suuntautumiset oletetaan olevan. Dipolit voivat olla joko kiinteästi suuntautuneita eli niiden suuntautuminen tiedetään etukäteen tai vapaasti suuntautuvia, jolloin niiden suuntausta ei tiedetä. \citep{Makela2018TruncatedLocalization} 
 
-Olkoon matriisi $\mathbf{A}\in \mathbb{R}^{m\times n}$, jonka rivien lukumäärä on $\mathit{m}$ ja sarakkeiden $\mathit{n}$. Matriisin \textbf{A} virittävät sen lineaarisesti riippumattomat sarakevektorit eli $\text{span}(\mathbf{A}) = \text{span}(\mathbf{A(:,1),...,A(:,n)})$.
-
-Matriisin \textbf{A} aste eli $\text{rank}(\textbf{A})$ kuvaa matriisin lineaarisesti riippumattomien sarake- tai rivivektoreiden lukumäärää. Matriisi \textbf{A} on kääntyvä eli sillä on käänteismatriisi $\mathbf{A}^{-1}$, jos matriisin aste on yhtä kuin sen rivien tai sarakkeiden määrä eli $\text{rank}(\textbf{A})=m=n$.
-
-
-
-Singulaariarvohajotelman avulla matriisi voidaan esittää sen ominaisarvojen ja ortonormaalien matriisien avulla
-
-\begin{equation}
-    \mathbf{A = UDV^T,}
-\end{equation}
-jossa matriisin $\mathbf{A}$ ominaisarvot ovat matriisin $\mathbf{D}$ diagonaalilla. 
-
-%pseudoinverse
-Pseudokäänteismatriisi $\mathbf{A^{\dagger}}$ on yleistys matriisin käänteismatriisille. Tämä joudutaan muodostamaan silloin, kun matriisi $\mathbf{A}$ ei ole kääntyvä. Pseudokäänteismatriisi saadaan muodostettua singulaariarvohajotelman avulla
-\begin{equation}
-    \mathbf{A^{\dagger} = VD^{\dagger}U^T}
-\end{equation}
-
-%projektio
-Projektio aliavaruuteen $\text{span}(\mathbf{A})$ saadaan kaavalla
-\begin{equation}
-    \mathbf{\Pi_{span(A)} = AA^{\dagger}}
-\end{equation}
-ja tämän ortogonaaliseen aliavaruuteen saadaan
-\begin{equation}
-    \mathbf{\Pi_{span(A^{\bot})}=I-AA^{\dagger}}
-\end{equation}
-\begin{figure}[ht]
-    \centering
-    \includegraphics{ortoprojektio.png}.
-    \caption{Ortoprojektio}
-\end{figure}
-
-\clearpage
-\subsection{MUSIC}
-MUSIC-algoritmi (Multiple Signal Classification) on \cite{Schmidt1986MultipleEstimation} kehittämä lähteenpaikannusmenetelmä, joka perustuu mittausdatan jakamiseen keskenään ortogonaalisiin signaali- ja kohina-aliavaruuksiin, jonka jälkeen tarkistetaan potentiaalisen lähteen topografian kuuluminen signaaliavaruuteen \citep{Mosher1999SourceMUSIC}. Algoritmissa lähteet kuvataan sähköisinä dipoleina ja se vaatii päämalliin tehdyn forward fieldin.
-
-Tässä kerron ensin tavallisesta MUSIC-algoritmista, johon MUSIC-algoritmin muut versiot perustuvat. Tämän jälkeen kerron MUSIC-algoritmin iteratiivista versioista, RAP- sekä TRAP-MUSIC-algoritmeista.
-
-Olkoon mittauksista saatu data kerättynä matriisiin $\mathbf{Y}\in \mathbb{R}^{m\times N}$, jossa $\mathit{m}$ on mittausanturien määrä ja $\mathit{N}$ mittausten lukumäärä. Matriisilla $\mathbf{Y}$ on muoto
+\subsubsection{Skalaari-MUSIC}
+Aloitetaan esittelemällä kiinnitetyn orientaation MUSIC-algoritmi, jota kutsutaan myös skalaari-MUSIC-algoritmiksi. Olkoon pisteessä $\mathbf{p}$ dipoli, jolla on orientaatio $\eta$. Olkoon mittauksista saatu data kerättynä matriisiin $\mathbf{Y}\in \mathbb{R}^{m\times N}$, jossa $\mathit{m}$ on mittaussensorien määrä ja $\mathit{N}$ mittausten lukumäärä. Sensorit mittaavat dipolien topografiaa $\mathbf{l(p,\eta)}$. Matriisilla $\mathbf{Y}$ on muoto
 
 \begin{equation}
     \mathbf{Y=AS+\epsilon},
 \end{equation}
-jossa $\mathbf{A}$ on sekoitusmatriisi, $\mathbf{S}$ ajankulkumatriisi ja $\mathbf{\epsilon}$ mittauskohinaa. Olkoon lähteellä paikassa $\mathbf{p}_j$ suuntaus $\mathbf{\eta}_j$. Tällöin lähteen topografia on $\mathbf{l}_j=\mathbf{l(p}_j,\mathbf{\eta}_j)$. Sekoitusmatriisi $\mathbf{A}$ sisältää lähteiden topografiat $\mathbf{\{l_1,...,l_n\}}$.
+jossa $\mathbf{A =[l(p}_1,\eta_1),...,\mathbf{l(p}_n,\eta_n)]$ on sekoitusmatriisi, $\mathbf{S}$ ajankulkumatriisi ja $\mathbf{\epsilon}$ mittauskohinaa. Lähteen orientaatio on kiinnitetyn orientaation tapauksessa riippuvainen vain sen sijainnista eli $\mathbf{l(p},\eta)=\mathbf{L(p})\mathbf{\eta}(\mathbf{p})$, jossa $\mathbf{L(p) = [l(p,e_x),l(p,e_y),l(p,e_z)]}$ on "lead-field-matriisi", joka sisältää pisteen $\mathbf{p}$ topografiat jokaisen karteesisen koordinaatin suunnassa. 
 
-Data-avaruus $\text{span}(\mathbf{Y})$ jaetaan keskenään ortogonaalisiin signaaliavaruuteen $\text{span}(\mathbf{A})$  ja kohina-avaruuteen $\text{span}(\mathbf{A^\bot})$  \citep{Mosher1999SourceMUSIC}. Ortogonaaliprojektio signaaliavaruuteen $\text{span}(\mathbf{A})$ voidaan approksimoida kaavalla
-
-\begin{equation}
-    \textbf{P}_{s}=\textbf{U}(:,1:n)\textbf{U}(:,1:n)^T
-\end{equation}
+Data-avaruus $\text{span}(\mathbf{Y})$ jaetaan keskenään ortogonaalisiin aliavaruuksiin, signaali-avaruuteen $\text{span}(\mathbf{A})$  ja kohina-avaruuteen $\text{span}(\mathbf{A^\bot})$  \citep{Mosher1999SourceMUSIC}. Ortogonaaliprojektio signaaliavaruuteen $\text{span}(\mathbf{A})$ voidaan approksimoida kaavan (\ref{eq:6}) avulla
 
 \begin{equation}
-    \mu(\mathbf{p}) = \frac{||\mathbf{P}_s\mathbf{l(p)}||^2}{||\mathbf{l(p)}||^2}    
+    \mathbf{P}_{sg}=\mathbf{U}(:,1:n)\mathbf{U}(:,1:n)^T,
+\end{equation}
+jossa $\mathbf{U}$ on ortogonaalinen matriisi singulaariarvohajotelmasta ja $\mathit{n}$ on lähteiden määrä. 
+
+Yleensä lähteiden määrää ei tiedetä, joten se täytyy approksimoida. Datamatriisin ominaisarvoista voidaan päätellä, kuinka monta voimakasta lähdettä löydetään. Ominaisarvoista voidaan muodostaa pylväsdiagrammi ja lähteiden määrä voidaan approksimoida sen mukaan, missä kohdassa tapahtuu merkittävä pudotus. Valkoisen kohinan tapauksessa pylväät tasoittuvat loppupäässä, kun lähteet ovat loppuneet. Värillisellä kohinalla pudotuksen löytäminen on hankalampaa ja täten lähteiden approksimaatio on vaikeampaa. Kuvassa \ref{fig:D} on simuloidun mittausdatan ominaisarvot pylväsdiagrammeina valkoisen ja värillisen kohinan tapauksissa.
+
+Olkoon approksimoitujen lähteiden määrä \~{n}. Projektio voidaan nyt muodostaa approksimoitujen lähteiden määrän mukaan $\mathbf{P}_{s}=\mathbf{U}(:,1:\~n)\mathbf{U}(:,1:\~n)^T$, jolloin \~n jälkeiset ominaisvektorit kuvaavat pelkkää kohinaa.
+
+\clearpage
+\begin{figure}[ht]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{d_valk.jpg} % first figure itself
+    \end{minipage}\hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{d_var.jpg} % second figure itself
+    \end{minipage}
+    \caption{Vasemman puoleisessa kuvassa simuloitu data sisältää valkoista kohinaa ja oikean puoleisessa kuvassa värillistä kohinaa. Molemmissa simulaatioissa on viisi lähdettä ja kohinan määrä on yhtä suuri.}
+    \label{fig:D}
+\end{figure}
+
+Pisteen $\mathbf{p}$ kuuluminen signaaliavaruuteen tarkistetaan projektio-operaattorin avulla. Pisteen $\mathbf{p}$ topografia $\mathbf{l(p)}$ lasketaan "forward modelin avulla. Topografia kuuluu signaaliavaruuteen, jos sen projektio signaaliavaruuteen on topografia itse. Toisin sanoen piste $\mathbf{p}$ on lähde, jos $\mathbf{P}_s\mathbf{l(p)} = \mathbf{l(p)}$. Tämä tarkoittaa sitä, että jos $\mathbf{l(p)}$ sijaitsee signaaliavaruudessa, sen normi ei muutu projektiossa eli $||\mathbf{P}_s\mathbf{l(p)}||=||\mathbf{l(p)}||$. Jos $\mathbf{l(p)}$ ei sijaitse signaaliavaruudessa, niin sen projektion normi on pienempi kuin $\mathbf{l(p)}$:n normi eli
+$||\mathbf{P}_s\mathbf{l(p)}||<||\mathbf{l(p)}||$.
+
+Näistä saadaan muodostettua paikannusfunktio, joka laskee jokaisen pisteen $\mathbf{p}$ kuulumisen signaaliavaruuteen
+
+\begin{equation}
+    \mathbf{\mu(p)} = \frac{||\mathbf{P}_s\mathbf{l(p)}||^2}{||\mathbf{l(p)}||^2} 
+    \begin{cases}
+    =1\text{, jos p on lähde}\\
+    <1\text{, jos p ei ole lähde}
+     \end{cases}
 \end{equation}
 
+\subsubsection{Vektori-MUSIC}
+Vapaan orientaation tapauksessa jokaiselle pisteelle $\mathbf{p}$ määräytyy suuntaus $\mathbf{\eta}$ mittausdatan perusteella. Vapaan orientaation MUSIC-algoritmia kutsutaan myös vektori-MUSIC -algoritmiksi. Vektori-MUSIC -algoritmi muodostetaan hyvin samalla tavalla kuin skalaari-MUSIC, mutta sen paikannusfunktio muodostetaan eri tavalla
 
-\subsection{RAP-MUSIC}
-RAP-MUSIC on MUSIC-algoritmin iteratiivinen versio, jossa lähteet paikannetaan yksitellen ja löydetyn lähteen topografia projisoidaan pois \citep{Mosher1999SourceMUSIC}. 
+\begin{equation}
+    \mathbf{\mu(p)} = \max_{||\eta||=1} \frac{||\mathbf{P}_s\mathbf{L(p)\eta}||^2}{||\mathbf{L(p)\eta}||^2} 
+\end{equation}
 
-\subsubsection{RAP-dilemma}
-RAP-MUSICin paikannusfunktio saattaa löytää lähdepisteitä jo löydettyjen lähteiden läheltä. Tämä johtuu siitä, ettei algoritmi pysty poistamaan topografiaa löydettyjen dipolien lähettyviltä \citep{Makela2018TruncatedLocalization}. Tätä RAP-dilemmaa havaitaan varsinkin kohinattomalla ja valkoisen kohinan datalla. Tämän algoritmin virheen korjaamiseksi \cite{Makela2018TruncatedLocalization} kehittivät ratkaisun, joka nimettiin TRAP-MUSICiksi. 
+\begin{figure}[h!]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{MUSICfix.jpg}
+    \end{minipage}\hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{MUSICfree.jpg} 
+    \end{minipage}
+    \caption{MUSIC-algoritmin simuloiminen pallomallin avulla MATLAB-ohjelmalla. Punaiset pisteet ovat sattumanvaraisesti sijoitettuja lähteitä ja topografia on tehty MUSIC-algoritmin avulla. Vasemmanpuoleisessa kuvassa on käytetty fixed-orientationia ja oikeanpuoleisessa free-orientationia. Molemmissa tapauksissa kohina on valkoista.}
+    \label{fig:MUSIC}
+\end{figure}
 
-\subsection{TRAP-MUSIC}
-Truncated RAP-MUSIC (TRAP-MUSIC) on muuten samankaltainen rekursiivinen algoritmi kuin RAP-MUSIC, mutta TRAP-MUSICin paikannusfunktioon on tehty pieni muutos: kun uusi lähde on löydetty, tämä kohta projisoidaan pois signaaliavaruudesta ja jäljellä oleva signaaliavaruus typistetään vastaamaan jäljellä olevien lähteiden arvioitua määrää \citep{Makela2018TruncatedLocalization}.
+Kuvasta \ref{fig:MUSIC} huomataan, että MUSIC vapaalla orientaatiolla saa aikaan suurempia aktiivisuuden alueita, mikä vaikeuttaa lähteiden paikantamista.

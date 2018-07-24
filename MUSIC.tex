@@ -1,15 +1,15 @@
 \subsection{MUSIC-algoritmi}
-\cite{Schmidt1986MultipleEstimation} kehitti MUSIC-algoritmin (Multiple Signal Classification), joka perustuu mittausdatan jakamiseen keskenään ortogonaalisiin signaali- ja kohina-aliavaruuksiin, jonka jälkeen tarkistetaan potentiaalisen lähdepisteen topografian kuuluminen signaaliavaruuteen \citep{Mosher1999SourceMUSIC}. Algoritmissa lähteet kuvataan sähköisinä dipoleina ja se vaatii päämalliin tehdyn "forward modelin" (suomennos?).
+\cite{Schmidt1986MultipleEstimation} kehitti MUSIC-algoritmin (Multiple Signal Classification), joka perustuu mittausdatan jakamiseen keskenään ortogonaalisiin signaali- ja kohina-aliavaruuksiin, jonka jälkeen tarkistetaan potentiaalisen lähdepisteen topografian kuuluminen signaaliavaruuteen \citep{Mosher1999SourceMUSIC}. Algoritmissa lähteet kuvataan sähköisinä dipoleina ja algoritmi vaatii päämalliin tehdyn "forward modelin" (suomennos?).
 
 Dipolit aivoissa voidaan olettaa kiinnitetyiksi eli niiden sijainnit eivät muutu ajan suhteen. MUSIC-algoritmit voidaan jakaa kahteen kategoriaan riippuen, miten dipolien suuntautumiset oletetaan olevan. Dipolit voivat olla joko kiinteästi suuntautuneita eli niiden suuntautuminen tiedetään etukäteen tai vapaasti suuntautuvia, jolloin niiden suuntausta ei tiedetä. \citep{Makela2018TruncatedLocalization} 
 
 \subsubsection{Skalaari-MUSIC}
-Aloitetaan esittelemällä kiinnitetyn orientaation MUSIC-algoritmi, jota kutsutaan myös skalaari-MUSIC-algoritmiksi. Olkoon pisteessä $\mathbf{p}$ dipoli, jolla on orientaatio $\eta$. Olkoon mittauksista saatu data kerättynä matriisiin $\mathbf{Y}\in \mathbb{R}^{m\times N}$, jossa $\mathit{m}$ on mittaussensorien määrä ja $\mathit{N}$ mittausten lukumäärä. Sensorit mittaavat dipolien topografiaa $\mathbf{l(p,\eta)}$. Matriisilla $\mathbf{Y}$ on muoto
+Aloitetaan esittelemällä kiinnitetyn orientaation MUSIC-algoritmi, jota kutsutaan myös nimellä skalaari-MUSIC. Olkoon pisteessä $\mathbf{p}$ dipoli, jolla on orientaatio $\eta$. Olkoon mittauksista saatu data kerättynä matriisiin $\mathbf{Y}\in \mathbb{R}^{m\times N}$, jossa $\mathit{m}$ on mittaussensorien määrä ja $\mathit{N}$ mittausten lukumäärä. Sensorit mittaavat dipolien topografiaa $\mathbf{l(p,\eta)}$. Matriisilla $\mathbf{Y}$ on muoto
 
 \begin{equation}
     \mathbf{Y=AS+\epsilon},
 \end{equation}
-jossa $\mathbf{A =[l(p}_1,\eta_1),...,\mathbf{l(p}_n,\eta_n)]$ on sekoitusmatriisi, $\mathbf{S}$ ajankulkumatriisi ja $\mathbf{\epsilon}$ mittauskohinaa. Lähteen orientaatio on kiinnitetyn orientaation tapauksessa riippuvainen vain sen sijainnista eli $\mathbf{l(p},\eta)=\mathbf{L(p})\mathbf{\eta}(\mathbf{p})$, jossa $\mathbf{L(p) = [l(p,e_x),l(p,e_y),l(p,e_z)]}$ on "lead-field-matriisi", joka sisältää pisteen $\mathbf{p}$ topografiat jokaisen karteesisen koordinaatin suunnassa. 
+jossa $\mathbf{A =[l(p}_1,\eta_1),...,\mathbf{l(p}_n,\eta_n)]$ on sekoitusmatriisi, $\mathbf{S}$ ajankulkumatriisi ja $\mathbf{\epsilon}$ mittauskohinaa. Lähteen orientaatio on kiinnitetyn orientaation tapauksessa riippuvainen vain sen sijainnista eli $\mathbf{l(p},\eta)=\mathbf{L(p})\mathbf{\eta}(\mathbf{p})$, jossa $\mathbf{L(p) = [l(p,e_x),l(p,e_y),l(p,e_z)]}$ on "lead-field-matriisi" (suom.?), joka sisältää pisteen $\mathbf{p}$ topografiat jokaisen karteesisen koordinaatin suunnassa. 
 
 Data-avaruus $\text{span}(\mathbf{Y})$ jaetaan keskenään ortogonaalisiin aliavaruuksiin, signaali-avaruuteen $\text{span}(\mathbf{A})$  ja kohina-avaruuteen $\text{span}(\mathbf{A^\bot})$  \citep{Mosher1999SourceMUSIC}. Ortogonaaliprojektio signaaliavaruuteen $\text{span}(\mathbf{A})$ voidaan approksimoida kaavan (\ref{eq:6}) avulla
 
@@ -18,9 +18,9 @@ Data-avaruus $\text{span}(\mathbf{Y})$ jaetaan keskenään ortogonaalisiin aliav
 \end{equation}
 jossa $\mathbf{U}$ on ortogonaalinen matriisi singulaariarvohajotelmasta ja $\mathit{n}$ on lähteiden määrä. 
 
-Yleensä lähteiden määrää ei tiedetä, joten se täytyy approksimoida. Datamatriisin ominaisarvoista voidaan päätellä, kuinka monta voimakasta lähdettä löydetään. Ominaisarvoista voidaan muodostaa pylväsdiagrammi ja lähteiden määrä voidaan approksimoida sen mukaan, missä kohdassa tapahtuu merkittävä pudotus. Valkoisen kohinan tapauksessa pylväät tasoittuvat loppupäässä, kun lähteet ovat loppuneet. Värillisellä kohinalla pudotuksen löytäminen on hankalampaa ja täten lähteiden approksimaatio on vaikeampaa. Kuvassa \ref{fig:D} on simuloidun mittausdatan ominaisarvot pylväsdiagrammeina valkoisen ja värillisen kohinan tapauksissa.
+Lähteiden määrää ei aina tiedetä, joten se täytyy approksimoida. Datamatriisin ominaisarvoista voidaan päätellä, kuinka monta voimakasta lähdettä löydetään signaaliavaruudesta. Ominaisarvoista voidaan muodostaa pylväsdiagrammi ja lähteiden määrä voidaan approksimoida sen mukaan, missä kohdassa tapahtuu merkittävä pudotus. Valkoisen kohinan tapauksessa pylväät tasoittuvat loppupäässä, kun lähteet ovat loppuneet. Värillisellä kohinalla pudotuksen löytäminen on hankalampaa ja täten lähteiden approksimaatio on vaikeampaa. Kuvassa \ref{fig:D} on simuloidun mittausdatan ominaisarvot pylväsdiagrammeina valkoisen ja värillisen kohinan tapauksissa.
 
-Olkoon approksimoitujen lähteiden määrä \~{n}. Projektio voidaan nyt muodostaa approksimoitujen lähteiden määrän mukaan $\mathbf{P}_{s}=\mathbf{U}(:,1:\~n)\mathbf{U}(:,1:\~n)^T$, jolloin \~n jälkeiset ominaisvektorit kuvaavat pelkkää kohinaa.
+Olkoon approksimoitujen lähteiden määrä \~{n}. Projektio voidaan nyt muodostaa approksimoitujen lähteiden määrän mukaan $\mathbf{P}_{s}=\mathbf{U}(:,1:\~n)\mathbf{U}(:,1:\~n)^T$, jolloin \~n jälkeiset ominaisvektorit kuvaavat kohinaa.
 
 \clearpage
 \begin{figure}[ht]
@@ -37,7 +37,7 @@ Olkoon approksimoitujen lähteiden määrä \~{n}. Projektio voidaan nyt muodost
     \label{fig:D}
 \end{figure}
 
-Pisteen $\mathbf{p}$ kuuluminen signaaliavaruuteen tarkistetaan projektio-operaattorin avulla. Pisteen $\mathbf{p}$ topografia $\mathbf{l(p)}$ lasketaan "forward modelin avulla. Topografia kuuluu signaaliavaruuteen, jos sen projektio signaaliavaruuteen on topografia itse. Toisin sanoen piste $\mathbf{p}$ on lähde, jos $\mathbf{P}_s\mathbf{l(p)} = \mathbf{l(p)}$. Tämä tarkoittaa sitä, että jos $\mathbf{l(p)}$ sijaitsee signaaliavaruudessa, sen normi ei muutu projektiossa eli $||\mathbf{P}_s\mathbf{l(p)}||=||\mathbf{l(p)}||$. Jos $\mathbf{l(p)}$ ei sijaitse signaaliavaruudessa, niin sen projektion normi on pienempi kuin $\mathbf{l(p)}$:n normi eli
+Pisteen $\mathbf{p}$ kuuluminen signaaliavaruuteen tarkistetaan projektio-operaattorin avulla. Pisteen $\mathbf{p}$ topografia $\mathbf{l(p)}$ lasketaan päämallin avulla. Topografia kuuluu signaaliavaruuteen, jos sen projektio signaaliavaruuteen on topografia itse. Toisin sanoen piste $\mathbf{p}$ on lähde, jos $\mathbf{P}_s\mathbf{l(p)} = \mathbf{l(p)}$. Tämä tarkoittaa sitä, että jos $\mathbf{l(p)}$ sijaitsee signaaliavaruudessa, sen normi ei muutu projektiossa eli $||\mathbf{P}_s\mathbf{l(p)}||=||\mathbf{l(p)}||$. Jos $\mathbf{l(p)}$ ei sijaitse signaaliavaruudessa, niin sen projektion normi on pienempi kuin $\mathbf{l(p)}$:n normi eli
 $||\mathbf{P}_s\mathbf{l(p)}||<||\mathbf{l(p)}||$.
 
 Näistä saadaan muodostettua paikannusfunktio, joka laskee jokaisen pisteen $\mathbf{p}$ kuulumisen signaaliavaruuteen
@@ -51,7 +51,7 @@ Näistä saadaan muodostettua paikannusfunktio, joka laskee jokaisen pisteen $\m
 \end{equation}
 
 \subsubsection{Vektori-MUSIC}
-Vapaan orientaation tapauksessa jokaiselle pisteelle $\mathbf{p}$ määräytyy suuntaus $\mathbf{\eta}$ mittausdatan perusteella. Vapaan orientaation MUSIC-algoritmia kutsutaan myös vektori-MUSIC -algoritmiksi. Vektori-MUSIC -algoritmi muodostetaan hyvin samalla tavalla kuin skalaari-MUSIC, mutta sen paikannusfunktio muodostetaan eri tavalla
+Vapaan orientaation tapauksessa jokaiselle pisteelle $\mathbf{p}$ määräytyy suuntaus $\mathbf{\eta}$ mittausdatan perusteella. Vapaan orientaation MUSIC-algoritmia kutsutaan myös nimellä vektori-MUSIC. Vektori-MUSIC muodostetaan hyvin samalla tavalla kuin skalaari-MUSIC, mutta sen paikannusfunktio on erilainen
 
 \begin{equation}
     \mathbf{\mu(p)} = \max_{||\eta||=1} \frac{||\mathbf{P}_s\mathbf{L(p)\eta}||^2}{||\mathbf{L(p)\eta}||^2}
@@ -70,7 +70,7 @@ Vapaan orientaation tapauksessa jokaiselle pisteelle $\mathbf{p}$ määräytyy s
         \centering
         \includegraphics[width=1\textwidth]{MUSICfree.jpg} 
     \end{minipage}
-    \caption{MUSIC-algoritmin simuloiminen pallomallin avulla MATLAB-ohjelmalla. Punaiset pisteet ovat sattumanvaraisesti sijoitettuja lähteitä ja topografia on tehty MUSIC-algoritmin avulla. Vasemmanpuoleisessa kuvassa on käytetty fixed-orientationia ja oikeanpuoleisessa free-orientationia. Molemmissa tapauksissa kohina on valkoista.}
+    \caption{MUSIC-algoritmin simuloiminen pallomallin avulla MATLAB-ohjelmalla. Punaiset pisteet ovat sattumanvaraisesti sijoitettuja lähteitä ja topografia on tehty MUSIC-algoritmin avulla. Vasemmanpuoleisessa kuvassa on skalaari-MUSIC ja oikeanpuoleisessa vektori-MUSIC. Molemmissa tapauksissa kohina on valkoista.}
     \label{fig:MUSIC}
 \end{figure}
 

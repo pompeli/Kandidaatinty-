@@ -4,7 +4,7 @@
 Dipolit aivoissa voidaan olettaa kiinnitetyiksi eli niiden sijainnit eivät muutu ajan suhteen. MUSIC-algoritmit voidaan jakaa kahteen kategoriaan riippuen, miten dipolien suuntautumiset oletetaan olevan. Dipolit voivat olla joko kiinteästi suuntautuneita eli niiden suuntautuminen tiedetään etukäteen tai vapaasti suuntautuvia, jolloin niiden suuntausta ei tiedetä. \citep{Makela2018TruncatedLocalization} 
 
 \subsubsection{Skalaari-MUSIC}
-Aloitetaan esittelemällä kiinnitetyn orientaation MUSIC-algoritmi, jota kutsutaan myös nimellä skalaari-MUSIC. Olkoon pisteessä $\mathbf{p}$ dipoli, jolla on orientaatio $\eta$. Olkoon mittauksista saatu data kerättynä matriisiin $\mathbf{Y}\in \mathbb{R}^{m\times N}$, jossa $\mathit{m}$ on mittaussensorien määrä ja $\mathit{N}$ mittausten lukumäärä. Sensorit mittaavat dipolien topografiaa $\mathbf{l(p,\eta)}$. Matriisilla $\mathbf{Y}$ on muoto
+Aloitetaan esittelemällä kiinnitetyn orientaation MUSIC-algoritmi, jota kutsutaan myös nimellä skalaari-MUSIC \citep{Makela2018TruncatedLocalization}. Olkoon pisteessä $\mathbf{p}$ dipoli, jolla on orientaatio $\eta$. Olkoon mittauksista saatu data kerättynä matriisiin $\mathbf{Y}\in \mathbb{R}^{m\times N}$, jossa $\mathit{m}$ on mittaussensorien määrä ja $\mathit{N}$ mittausten lukumäärä. Sensorit mittaavat dipolien topografiaa $\mathbf{l(p,\eta)}$. Matriisilla $\mathbf{Y}$ on muoto
 
 \begin{equation}
     \mathbf{Y=AS+\epsilon},
@@ -38,7 +38,7 @@ Olkoon approksimoitujen lähteiden määrä \~{n}. Projektio voidaan nyt muodost
 \end{figure}
 
 Pisteen $\mathbf{p}$ kuuluminen signaaliavaruuteen tarkistetaan projektio-operaattorin avulla. Pisteen $\mathbf{p}$ topografia $\mathbf{l(p)}$ lasketaan päämallin avulla. Topografia kuuluu signaaliavaruuteen, jos sen projektio signaaliavaruuteen on topografia itse. Toisin sanoen piste $\mathbf{p}$ on lähde, jos $\mathbf{P}_s\mathbf{l(p)} = \mathbf{l(p)}$. Tämä tarkoittaa sitä, että jos $\mathbf{l(p)}$ sijaitsee signaaliavaruudessa, sen normi ei muutu projektiossa eli $||\mathbf{P}_s\mathbf{l(p)}||=||\mathbf{l(p)}||$. Jos $\mathbf{l(p)}$ ei sijaitse signaaliavaruudessa, niin sen projektion normi on pienempi kuin $\mathbf{l(p)}$:n normi eli
-$||\mathbf{P}_s\mathbf{l(p)}||<||\mathbf{l(p)}||$.
+$||\mathbf{P}_s\mathbf{l(p)}||<||\mathbf{l(p)}||$. \citep{Makela2018TruncatedLocalization}
 
 Näistä saadaan muodostettua paikannusfunktio, joka laskee jokaisen pisteen $\mathbf{p}$ kuulumisen signaaliavaruuteen
 
@@ -51,27 +51,10 @@ Näistä saadaan muodostettua paikannusfunktio, joka laskee jokaisen pisteen $\m
 \end{equation}
 
 \subsubsection{Vektori-MUSIC}
-Vapaan orientaation tapauksessa jokaiselle pisteelle $\mathbf{p}$ määräytyy suuntaus $\mathbf{\eta}$ mittausdatan perusteella. Vapaan orientaation MUSIC-algoritmia kutsutaan myös nimellä vektori-MUSIC. Vektori-MUSIC muodostetaan hyvin samalla tavalla kuin skalaari-MUSIC, mutta sen paikannusfunktio on erilainen
+Vapaan orientaation tapauksessa jokaiselle pisteelle $\mathbf{p}$ määräytyy suuntaus $\mathbf{\eta}$ mittausdatan perusteella. Vapaan orientaation MUSIC-algoritmia kutsutaan myös nimellä vektori-MUSIC \citep{Makela2018TruncatedLocalization}. Vektori-MUSIC muodostetaan hyvin samalla tavalla kuin skalaari-MUSIC, mutta sen paikannusfunktio on erilainen
 
 \begin{equation}
     \mathbf{\mu(p)} = \max_{||\eta||=1} \frac{||\mathbf{P}_s\mathbf{L(p)\eta}||^2}{||\mathbf{L(p)\eta}||^2}
 \end{equation}
 
 (jatkuu kunhan opin selittämään)
-
-\clearpage
-\begin{figure}[h!]
-    \centering
-    \begin{minipage}{0.45\textwidth}
-        \centering
-        \includegraphics[width=1\textwidth]{MUSICfix.jpg}
-    \end{minipage}\hfill
-    \begin{minipage}{0.45\textwidth}
-        \centering
-        \includegraphics[width=1\textwidth]{MUSICfree.jpg} 
-    \end{minipage}
-    \caption{MUSIC-algoritmin simuloiminen pallomallin avulla MATLAB-ohjelmalla. Punaiset pisteet ovat sattumanvaraisesti sijoitettuja lähteitä ja topografia on tehty MUSIC-algoritmin avulla. Vasemmanpuoleisessa kuvassa on skalaari-MUSIC ja oikeanpuoleisessa vektori-MUSIC. Molemmissa tapauksissa kohina on valkoista.}
-    \label{fig:MUSIC}
-\end{figure}
-
-Kuvasta \ref{fig:MUSIC} huomataan, että MUSIC vapaalla orientaatiolla saa aikaan suurempia aktiivisuuden alueita, mikä vaikeuttaa lähteiden paikantamista.

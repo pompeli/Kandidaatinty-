@@ -7,13 +7,15 @@ Olkoon matriisi $\mathbf{A}\in \mathbb{R}^{m\times n}$, jonka rivien lukumäär�
 
 Matriisin \textbf{A} aste eli $\text{rank}(\textbf{A})$ kuvaa matriisin lineaarisesti riippumattomien sarake- tai rivivektoreiden lukumäärää. Matriisi \textbf{A} on kääntyvä eli sillä on käänteismatriisi $\mathbf{A}^{-1}$, jos matriisin aste on yhtä kuin sen rivien tai sarakkeiden määrä eli $\text{rank}(\textbf{A})=m=n$.
 
-Singulaariarvohajotelman avulla matriisi \textbf{A} voidaan esittää sen ominaisarvomatriisin \textbf{D} sekä ortogonaalisten matriisien \textbf{U} ja \textbf{V} avulla
+Singulaariarvohajotelman avulla matriisi \textbf{A} voidaan esittää sen diagonaalimatriisin \textbf{D} sekä unitaaristen matriisien \textbf{U} ja \textbf{V} avulla
 
 \begin{equation}
     \mathbf{A = UDV^T,}
     \label{eq:svd}
 \end{equation}
-jossa matriisin $\mathbf{A}$ ominaisarvot ovat matriisin $\mathbf{D}$ diagonaalilla. Ominaisarvoja $d_i$ on matriisin $\mathbf{D}$ diagonaalilla yhtä monta, kuin matriisilla $\mathbf{A}$ on lineaarisesti riippumattomia sarakkeita. Toisin sanoen ominaisarvojen joukko on $\{d_1,...,d_r\}$, jossa $r = \text{rank}(\mathbf{A})$. Loput luvut matriisin \textbf{D} diagonaalilla ovat nollia ja singulaariarvohajotelma voidaan esittää matriisitulon avulla 
+jossa matriisi \textbf{D} sisältää matriisin \textbf{A} ominaisarvot. Matriisi \textbf{U} muodostuu matriisin \textbf{A} vasemmanpuoleisista ominaisvektoreista ja \textbf{V} vastaavasti oikeanpuoleisista ominaisvektoreista. 
+
+Ominaisarvoja $d_i$ on matriisin $\mathbf{D}$ diagonaalilla yhtä monta, kuin matriisilla $\mathbf{A}$ on lineaarisesti riippumattomia sarakkeita. Toisin sanoen ominaisarvojen joukko on $\{d_1,...,d_r\}$, jossa $r = \text{rank}(\mathbf{A})$. Loput luvut matriisin \textbf{D} diagonaalilla ovat nollia ja singulaariarvohajotelma voidaan esittää matriisitulon avulla 
 
 \begin{equation}
     \mathbf{A} = \mathbf{U}(:,1:r)\mathbf{D}(1:r,1:r)\mathbf{V}(:,1:r)^T
@@ -26,9 +28,9 @@ Pseudokäänteismatriisi $\mathbf{A^{\dagger}}$ on yleistys matriisin käänteis
 \begin{equation}
     \mathbf{A^{\dagger} = VD^{\dagger}U^T},
 \end{equation}
-jossa \textbf{U} ja \textbf{V} ovat kaavasta \ref{eq:svd} ja $\mathbf{D}^{\dagger} = \{\frac{1}{d_1},...,\frac{1}{d_r}\}$ .
+jossa \textbf{U} ja \textbf{V} ovat kaavasta \ref{eq:svd} ja $\mathbf{D}^{\dagger}$ sisältää matriisin \textbf{A} ominaisarvojen käänteisluvut.
 
-Symmetrinen neliömatriisi P on ortogonaaliprojektio aliavaruuteen $\text{span}(\mathbf{A})$ 
+Ortogonaaliprojektio aliavaruuteen $\text{span}(\mathbf{A})$ on 
 
 \begin{equation}
     \mathbf{P}_{\text{span}(\mathbf{A})}= \mathbf{AA}^{\dagger}

@@ -1,22 +1,25 @@
-\section{Taustaa}
+\section{Teoreettinen tausta}
 
 \subsection{Aivojen rakenne ja toiminta}
-Aivot koostuvat neuroneista eli hermosoluista, joiden tärkein tehtävä on kuljettaa sähköistä informaatiota toisille soluille. Sooma on neuronin toiminnallinen keskus, josta signaali kulkeutuu eteenpäin viejähaaraketta eli aksonia pitkin. Dendriitit eli tuojahaarakkeet vastaanottavat ja antavat eteenpäin ärsykkeitä toisilta neuroneilta. \citep{Hamalainen1993MagnetoencephalographytheoryBrain}
+Aivot ovat keskushermoston tärkein osa ja ne vastaavat tiedon prosessoinnista ja välityksestä. Aivot koostuvat kahdesta aivopuoliskosta, jotka jaetaan aivolohkoihin. Eri aivolohkot vastaavat tietyistä aistimuksista. Aivokuori eli korteksi on aivojen päällimmäisin, poimuttunut kerros. \citep{Hamalainen1993MagnetoencephalographytheoryBrain}
 
-Neuronin aksonia pitkin kulkeutuu sähköinen hermoimpulssi eli aktiopotentiaali. Aktiopotentiaali kulkeutuu amplitudiaan muuttamatta neuronin päätyyn, jossa kaksi neuronia ovat liittyneinä toisiinsa synapsilla. Aktiopotentiaalin saavuttua presynaptisen neuronin päätyyn vapautuu synapsirakoon välittäjäaineita, jotka välittävät viestiä eteenpäin postsynaptiselle neuronille. Välittäjäaineiden kiinnittyessä postsynaptisen neuronin päähän potentiaaliero neuronin kalvojännitteessä kasvaa ja syntyy sähkövirta postsynaptisen neuronin sisään tai ulos. Tätä postsynaptista potentiaalia (PSP) havaitaan EEG:n ja MEG:n avulla. \citep{Hamalainen1993MagnetoencephalographytheoryBrain}
+Sähköinen informaatio aivoissa kulkee hermosolujen eli neuronien välityksellä. Sooma on neuronin toiminnallinen keskus, josta signaali kulkeutuu eteenpäin viejähaaraketta eli aksonia pitkin. Dendriitit eli tuojahaarakkeet vastaanottavat ja antavat eteenpäin ärsykkeitä toisilta neuroneilta. \citep{Hamalainen1993MagnetoencephalographytheoryBrain}
 
-Aivokuori eli korteksi on aivojen päällimmäinen, poimuttunut kerros. Korteksilla sijaitsevat pyramidisolut ovat suuntautuneita kohtisuorasti korteksin pintaa vastaan ja niiden oletetaan olevan vastuussa MEG:n ja EEG:n mittauksista. \citep{Hamalainen1993MagnetoencephalographytheoryBrain}
+Neuronin aksonia pitkin kulkeutuu sähköinen hermoimpulssi eli aktiopotentiaali. Aktiopotentiaali kulkeutuu amplitudiaan muuttamatta neuronin päätyyn, jossa kaksi neuronia ovat liittyneinä toisiinsa synapsilla. Aktiopotentiaalin saavuttua presynaptisen neuronin päätyyn vapautuu synapsirakoon välittäjäaineita, jotka välittävät viestiä eteenpäin postsynaptiselle neuronille. Välittäjäaineiden kiinnittyessä postsynaptisen neuronin päähän potentiaaliero neuronin kalvojännitteessä muuttuu. Tätä potentiaalimuutosta kutsutaan postsynaptiseksi potentiaaliksi (PSP), jota havaitaan MEG:n ja EEG:n avulla. \citep{Hamalainen1993MagnetoencephalographytheoryBrain}
+
+\subsection{EEG}
+EEG mittaa aivojen aktiivisuutta päänahalle asetettujen elektrodien avulla. Nämä elektrodit mittaavat potentiaalieroja tiettyyn referenssielektrodiin verrattuna. \citep{niedermeyer2011niedermeyer}
 
 \subsection{MEG}
-Sähkövirrat neuroneissa synnyttävät ympärilleen magneettikenttiä Maxwellin yhtälöiden mukaan. MEG mittaa pään ulkopuolelta neuronien synnyttämiä heikkoja magneettikenttiä, joilla on kohtisuora komponentti pään pintaa vastaan. Täten vain neuronit, jotka ovat samansuuntaisia pään pinnan kanssa tuottavat pään ulkopuolelle havaittavaa magneettikenttää. Täten MEG:llä tutkitaan lähteitä, jotka ovat korteksin poimuissa. \citep[s. 5]{hansen2010meg}
+Sähkövirrat neuroneissa synnyttävät ympärilleen magneettikenttiä Maxwellin yhtälöiden mukaan. MEG mittaa pään ulkopuolelta näitä heikkoja magneettikenttiä suprajohtavien kvanttilaitteiden (SQUID) avulla.
+
+MEG on hyvin herkkä ulkopuolisille häiriöille, minkä takia MEG-laite yleensä sijoitetaan suojahuoneeseen, jonne ulkopuoliset magneettikentät eivät pääse sisälle. Myös, esimerkiksi, silmien räpäyttäminen ja sydämen lyönti aiheuttavat häiriötä mittauksessa. \citep{Hamalainen1993MagnetoencephalographytheoryBrain}
 
 \subsection{Aivojen tutkiminen}
-Yksittäisen neuronin  aikaansaamaa magneettikenttää on liian heikko havaita MEG-laitteella. Tuhansien pyramidisolujen synkronoitu toiminta saa aikaan pään ulkopuolella havaittavan magneettikentän.
 
-Aivojen sähköisiä aktiisuuden lähteitä voidaan kuvata virtadipoleina. Virtadipolia voidaan kuvata pienenä sähkövirtana, mikä koostuu lähteestä ja nielusta (lähde??). PSP:n aikaansaamaa sähkövirtaa voidaan pitää virtadipolina.
- 
-Lähteen tuottaman magneetti- tai sähkökentän matemaattista laskemista pään ulkopuolella kutsutaan suoraksi ongelmaksi (\textit{forward problem}). Tietyn lähteen paikantaminen pään ulkopuolelta saatujen arvojen perusteella sanotaan käänteisongelmaksi (\textit{inverse problem}).
+Yksittäisen neuronin  aikaansaamaa magneettikenttää on liian heikko havaita MEG-laitteella. Tuhansien pyramidisolujen synkronoitu toiminta saa aikaan pään ulkopuolella havaittavan magneettikentän. \citep{He2018ElectrophysiologicalDynamics}
 
-MUSIC-algoritmiin perustuvat lähdepaikannusmenetelmät vaativat suoran mallin (\textit{forward model}) toimiakseen. Suorassa mallissa täytyy ottaa huomioon pään ja aivojen geometriat sekä päänahan, kallon ja aivojen johtavuudet. \citep{hansen2010meg}
+Aivojen sähköisiä aktiisuuden lähteitä voidaan approksimoida virtadipoleina, joissa varaukset kulkeutuvat lähteestä nieluun \citep[s. 6]{HariMEGprimer}. PSP:n aikaansaamaa sähkövirtaa voidaan pitää lyhyenä virtadipolina. \citep{He2018ElectrophysiologicalDynamics}
 
-Neuromagneettista toimintaa voidaan mitata MEG:n avulla ainoastaan aivokuorelta, mikä johtaa siihen, ettei lähteen sijainnille saada yksikäsitteistä ratkaisua \citep[s. 2]{hansen2010meg}.
+Neuromagneettista toimintaa voidaan mitata MEG:n avulla ainoastaan aivokuorelta, mikä johtaa siihen, ettei lähteen sijainnille saada yksikäsitteistä ratkaisua. Tämän vuoksi joudutaan rajoittamaan mahdollisia lähderatkaisuja \citep[s. 2]{hansen2010meg}.
+

@@ -1,4 +1,11 @@
 \section{Johdanto}
 
-Aivojen sähköistä aktiivisuutta voidaan seurata noninvasiivisesti elektroenkefalografian (EEG) ja magnetoenkefalografian (MEG) avulla. EEG mittaa neuronien sähköistä toimintaa päänahan kautta mitattavien potentiaalierojen avulla. MEG puolestaan mittaa sähköisen toiminnan aikaansaamia magneettikenttiä pään ulkopuolelta.
+Aivojen sähköistä aktiivisuutta voidaan seurata noninvasiivisesti elektroenkefalografian (EEG) ja magnetoenkefalografian (MEG) avulla. EEG mittaa neuronien sähköistä toimintaa päänahan kautta mitattavien potentiaalierojen avulla. MEG puolestaan mittaa sähköisen toiminnan aikaansaamia magneettikenttiä pään ulkopuolelta. \citep{Hamalainen1993MagnetoencephalographytheoryBrain}
 
+Lähteenpaikannuksen avulla yritetään saada selville aivoaktiivisuuden sijainti MEG:n tai EEG:n avulla saatujen mittausten avulla. Tällaista ulkoisesti saatujen mittausten avulla tehtävää lähdepaikannusta sanotaan käänteisongelmaksi (\textit{inverse problem}) \citep[s. 2]{hansen2010meg}.
+
+Usean signaalin luokittelu (\textit{multiple signal classification, MUSIC}) on lähteenpaikannusalgoritmi, jossa mittausdata jaetaan keskenään ortogonaalisiin aliavaruuksiin, signaali- ja kohina-avaruuksiin \citep{Schmidt1986MultipleEstimation}. Tämän jälkeen tarkistetaan tietyn lähdepisteen kuuluminen signaaliavaruuteen ortogonaaliprojektion avulla \citep{Mosher1999SourceMUSIC}.
+
+Tämän kandidaattityön tarkoituksena on esitellä MUSIC-algoritmi ja verrata sitä sen eri versioihin. MUSIC-algoritmia testataan simuloidulla datalla aika-alueella pallomallin avulla sekä oikean mittausdatan avulla reaalisten aivojen mallilla. Työssä esitellään myös lähteenpaikannusta mittausdatan taajuusalueella.
+
+Kappaleessa 2 esitellään taustaa aivojen toiminnasta ja sen tutkimisesta. Kappaleessa 3 käydään läpi vaadittavia matemaattisia näkökulmia ja esitellään MUSIC-algoritmi ja siihen perustuvia iteratiivisia versioita. Kappaleessa 4 esitellään MUSIC-algoritmin simulointia sen eri versioilla pallomallilla ja oikealla päämallilla.

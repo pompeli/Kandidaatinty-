@@ -1,5 +1,5 @@
 \subsection{MUSIC-algoritmi}
-\cite{Schmidt1986MultipleEstimation} kehitti usean signaalin luokittelu -algoritmin (Multiple Signal Classification, MUSIC), joka perustuu mittausdatan jakamiseen keskenään ortogonaalisiin signaali- ja kohina-aliavaruuksiin, jonka jälkeen tarkistetaan potentiaalisen lähdepisteen topografian kuuluminen signaaliavaruuteen \citep{Mosher1999SourceMUSIC}. Algoritmissa lähteet kuvataan sähköisinä dipoleina ja algoritmi vaatii päämalliin tehdyn suoran mallin (forward model).
+\cite{Schmidt1986MultipleEstimation} kehitti usean signaalin luokittelu -algoritmin (\textit{Multiple Signal Classification, MUSIC}), joka perustuu mittausdatan jakamiseen keskenään ortogonaalisiin signaali- ja kohina-aliavaruuksiin, jonka jälkeen tarkistetaan potentiaalisen lähdepisteen topografian kuuluminen signaaliavaruuteen \citep{Mosher1999SourceMUSIC}. Algoritmissa lähteet kuvataan sähköisinä dipoleina ja algoritmi vaatii päämalliin tehdyn suoran mallin (\textit{forward model}). Suorassa mallissa täytyy ottaa huomioon pään ja aivojen geometriat sekä päänahan, kallon ja aivojen johtavuudet. \citep{hansen2010meg}
 
 Dipolit aivoissa voidaan olettaa kiinnitetyiksi eli niiden sijainnit eivät muutu ajan suhteen. MUSIC-algoritmit voidaan jakaa kahteen kategoriaan riippuen, miten dipolien suuntautumiset oletetaan olevan. Dipolit voivat olla joko kiinteästi suuntautuneita eli niiden suuntautuminen tiedetään etukäteen tai vapaasti suuntautuvia, jolloin niiden suuntausta ei tiedetä. \citep{Makela2018TruncatedLocalization}
 
@@ -7,9 +7,7 @@ Dipolit aivoissa voidaan olettaa kiinnitetyiksi eli niiden sijainnit eivät muut
 
 Aloitetaan esittelemällä kiinnitetyn orientaation MUSIC-algoritmi, jota kutsutaan myös nimellä skalaari-MUSIC \citep{Makela2018TruncatedLocalization}. 
 
-Olkoon pisteessä $\mathbf{p}$ dipoli, jolla on orientaatio $\eta$. Yhden sensorin lukema data on muotoa $\mathbf{y(t) = As(t)+\epsilon(t)}$, jossa \textbf{A} on sekoitusmatriisi, 
-
-Olkoon mittauksista saatu data-matriisi $\mathbf{Y}\in \mathbb{R}^{m\times N}$, jossa $\mathit{m}$ on mittaussensorien määrä ja $\mathit{N}$ mittausten lukumäärä. Matriisilla $\mathbf{Y}$ on muoto
+Olkoon pisteessä $\mathbf{p}$ dipoli, jolla on orientaatio $\eta$. Olkoon mittauksista saatu data-matriisi $\mathbf{Y}\in \mathbb{R}^{m\times N}$, jossa $\mathit{m}$ on mittaussensorien määrä ja $\mathit{N}$ mittausten lukumäärä. Matriisilla $\mathbf{Y}$ on muoto
 
 \begin{equation}
     \mathbf{Y=AS+\epsilon},

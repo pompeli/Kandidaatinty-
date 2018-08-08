@@ -1,25 +1,30 @@
 \section{Teoreettinen tausta}
 
 \subsection{Aivojen rakenne ja toiminta}
-Aivot ovat keskushermoston tärkein osa ja ne vastaavat tiedon prosessoinnista ja välityksestä. Aivot koostuvat kahdesta aivopuoliskosta, jotka jaetaan aivolohkoihin. Eri aivolohkot vastaavat tietyistä aistimuksista. Aivokuori eli korteksi on aivojen päällimmäisin, poimuttunut kerros. \citep{Hamalainen1993MagnetoencephalographytheoryBrain}
+Aivot ovat keskushermoston tärkein osa ja ne vastaavat tiedon prosessoinnista ja välityksestä. Aivot koostuvat kahdesta aivopuoliskosta, jotka jaetaan aivolohkoihin. Eri aivolohkot vastaavat tietyistä aistimuksista. Aivokuori eli korteksi on aivojen päällimmäisin, poimuttunut kerros. \citep{Hamalainen1993MagnetoencephalographytheoryBrain} Poimuisuuden vuoksi aivokuoreen muodostuu poimuja sekä uurteita \citep{hansen2010meg}. 
 
-Sähköinen informaatio aivoissa kulkee hermosolujen eli neuronien välityksellä. Sooma on neuronin toiminnallinen keskus, josta signaali kulkeutuu eteenpäin viejähaaraketta eli aksonia pitkin. Dendriitit eli tuojahaarakkeet vastaanottavat ja antavat eteenpäin ärsykkeitä toisilta neuroneilta. \citep{Hamalainen1993MagnetoencephalographytheoryBrain}
+Sähköinen informaatio aivoissa kulkee hermosolujen eli neuronien välityksellä. Sooma on neuronin toiminnallinen keskus, josta signaali kulkeutuu eteenpäin viejähaaraketta eli aksonia pitkin. Dendriitit eli tuojahaarakkeet vastaanottavat ärsykkeitä toisilta neuroneilta. \citep{Hamalainen1993MagnetoencephalographytheoryBrain}
 
 Neuronin aksonia pitkin kulkeutuu sähköinen hermoimpulssi eli aktiopotentiaali. Aktiopotentiaali kulkeutuu amplitudiaan muuttamatta neuronin päätyyn, jossa kaksi neuronia ovat liittyneinä toisiinsa synapsilla. Aktiopotentiaalin saavuttua presynaptisen neuronin päätyyn vapautuu synapsirakoon välittäjäaineita, jotka välittävät viestiä eteenpäin postsynaptiselle neuronille. Välittäjäaineiden kiinnittyessä postsynaptisen neuronin päähän potentiaaliero neuronin kalvojännitteessä muuttuu. Tätä potentiaalimuutosta kutsutaan postsynaptiseksi potentiaaliksi (PSP), jota havaitaan MEG:n ja EEG:n avulla. \citep{Hamalainen1993MagnetoencephalographytheoryBrain}
 
-\subsection{EEG}
-EEG mittaa aivojen aktiivisuutta päänahalle asetettujen elektrodien avulla. Nämä elektrodit mittaavat potentiaalieroja tiettyyn referenssielektrodiin verrattuna. \citep{niedermeyer2011niedermeyer}
+Aivokuorella sijaitsevat pyramidisolut ovat isoja hermosoluja, jotka ovat kohtisuorassa aivokuorta vastaan \citep{Hamalainen1993MagnetoencephalographytheoryBrain}. Niiden aktivaatio on suurin tekijä MEG:n ja EEG:n havaitsemista signaaleista \citep{HariMEGprimer}. Yksittäisen neuronin aktivaatio on riittämätön havaita MEG:n tai EEG:n avulla. Siihen vaaditaan tuhansien pyramidisolujen synkronoitu toiminta. \citep{He2018ElectrophysiologicalDynamics}
 
-\subsection{MEG}
-Sähkövirrat neuroneissa synnyttävät ympärilleen magneettikenttiä Maxwellin yhtälöiden mukaan. MEG mittaa pään ulkopuolelta näitä heikkoja magneettikenttiä suprajohtavien kvanttilaitteiden (SQUID) avulla.
-
-MEG on hyvin herkkä ulkopuolisille häiriöille, minkä takia MEG-laite yleensä sijoitetaan suojahuoneeseen, jonne ulkopuoliset magneettikentät eivät pääse sisälle. Myös, esimerkiksi, silmien räpäyttäminen ja sydämen lyönti aiheuttavat häiriötä mittauksessa. \citep{Hamalainen1993MagnetoencephalographytheoryBrain}
+Aivojen sähköisiä aktiisuuden lähteitä voidaan approksimoida virtadipoleina (\textit{current dipole}), joissa varaukset kulkeutuvat lähteestä nieluun. Tätä neuronin sisäistä sähkövirtaa sanotaan myös päävirraksi (\textit{primary current}), jonka lisäksi syntyy neuronin ulkopuoliseen aineeseen paluuvirta (\textit{return current}), joka palauttaa sähköisen varauksen nielusta takaisin lähteeseen. Näin varausta ei keräänny minnekkään. \citep[s. 6-7]{HariMEGprimer} Pyramidisolua voidaan pitää lyhyenä virtadipolina \citep[s. 10]{HariMEGprimer}.
 
 \subsection{Aivojen tutkiminen}
 
-Yksittäisen neuronin  aikaansaamaa magneettikenttää on liian heikko havaita MEG-laitteella. Tuhansien pyramidisolujen synkronoitu toiminta saa aikaan pään ulkopuolella havaittavan magneettikentän. \citep{He2018ElectrophysiologicalDynamics}
+\subsubsection{MEG}
+Sähkövirrat neuroneissa synnyttävät ympärilleen magneettikenttiä Maxwellin yhtälöiden mukaisesti. MEG mittaa pään ulkopuolelta näitä heikkoja magneettikenttiä suprajohtavien kvantti-interferenssilaitteiden (\textit{superconducting quantum interference device, SQUID}) avulla, joita jäähdytetään nestemäisen heliumin avulla \citep{HariMEGprimer}.
 
-Aivojen sähköisiä aktiisuuden lähteitä voidaan approksimoida virtadipoleina, joissa varaukset kulkeutuvat lähteestä nieluun \citep[s. 6]{HariMEGprimer}. PSP:n aikaansaamaa sähkövirtaa voidaan pitää lyhyenä virtadipolina. \citep{He2018ElectrophysiologicalDynamics}
+MEG:n avulla mitataan lähinnä aktivaatioita, jotka tapahtuvat aivokuoren uurteiden seinillä. Tämä johtuu siitä, ettei MEG pysty havaitsemaan lähteitä, jotka tuottavat pään pinnan suuntaista magneettikenttää. \citep{hansen2010meg}
 
-Neuromagneettista toimintaa voidaan mitata MEG:n avulla ainoastaan aivokuorelta, mikä johtaa siihen, ettei lähteen sijainnille saada yksikäsitteistä ratkaisua. Tämän vuoksi joudutaan rajoittamaan mahdollisia lähderatkaisuja \citep[s. 2]{hansen2010meg}.
+MEG on hyvin herkkä ulkopuolisille häiriöille, minkä takia MEG-laite yleensä sijoitetaan suojahuoneeseen, jonne ulkopuoliset magneettikentät eivät pääse sisälle. Myös, esimerkiksi, silmien räpäyttäminen ja sydämen lyönti aiheuttavat häiriötä mittauksessa. \citep{Hamalainen1993MagnetoencephalographytheoryBrain}
+
+\subsubsection{EEG}
+EEG mittaa aivojen aktiivisuutta päänahalle asetettujen elektrodien avulla. Nämä elektrodit mittaavat potentiaalieroja tiettyyn vertailuelektrodiin verrattuna. \citep{Michel2004EEGImaging} Toisin kuin MEG:n tapauksessa, EEG:n mittaamiin sähköisiin potentiaalieroihin pään pinnalla vaikuttavat kaikki sähköiset virrat \citep{HariMEGprimer}. EEG on MEG:tä edullisempi vaihtoehto aivojen tutkimiseen ja sitä voidaan käyttää yhdessä muiden kuvantamismenetelmien, kuten transkraniaalisen magneettistimulaation (TMS), kanssa \citep[s. 11]{HariMEGprimer}. 
+
+\subsubsection{Aivotutkimuksen haasteet}
+Jos aivojen ja pään geometriset mitat sekä johtavuudet tiedetään tarkasti, voidaan tunnetun virtadipolin aiheuttama potentiaali tai magneettikenttä pään ulkopuolella laskea tarkasti. Tätä Maxwellin yhtälöiden avulla tehhtävää ongelmanratkaisua sanotaan suoraksi ongelmaksi (\textit{forward problem}). \citep{Hamalainen1993MagnetoencephalographytheoryBrain}
+
+MEG:n ja EEG:n mittausten avulla tehtävä lähdepaikannus on käänteisongelma. Neuromagneettista toimintaa voidaan mitata MEG:n ja EEG:n avulla ainoastaan aivokuorelta, mikä johtaa siihen, ettei lähteen sijainnille saada yksikäsitteistä ratkaisua. Tämän vuoksi joudutaan rajoittamaan mahdollisia lähderatkaisuja \citep[s. 2]{hansen2010meg}.
 

@@ -1,18 +1,25 @@
 \subsection{MUSIC-algoritmi}
-\cite{Schmidt1986MultipleEstimation} kehitti usean signaalin luokittelu -algoritmin (\textit{Multiple Signal Classification, MUSIC}), joka perustuu mittausdatan jakamiseen keskenään ortogonaalisiin signaali- ja kohina-aliavaruuksiin, jonka jälkeen tarkistetaan potentiaalisen lähdepisteen topografian kuuluminen signaaliavaruuteen \citep{Mosher1999SourceMUSIC}. Algoritmissa lähteet kuvataan sähköisinä dipoleina ja algoritmi vaatii päämalliin tehdyn suoran mallin (\textit{forward model}). Suorassa mallissa täytyy ottaa huomioon pään ja aivojen geometriat sekä päänahan, kallon ja aivojen johtavuudet. \citep{hansen2010meg}
+\cite{Schmidt1986MultipleEstimation} kehitti MUSIC-algoritmin, joka perustuu mittausdatan jakamiseen keskenään ortogonaalisiin signaali- ja kohina-aliavaruuksiin, jonka jälkeen tarkistetaan potentiaalisen lähdepisteen topografian kuuluminen signaaliavaruuteen \citep{Mosher1999SourceMUSIC}. Algoritmissa lähteet kuvataan sähköisinä dipoleina ja algoritmi vaatii päämalliin tehdyn suoran mallin (\textit{forward model}). Suorassa mallissa täytyy ottaa huomioon pään ja aivojen geometriat sekä päänahan, kallon ja aivojen johtavuudet. \citep{hansen2010meg}
 
-Dipolit aivoissa voidaan olettaa kiinnitetyiksi eli niiden sijainnit eivät muutu ajan suhteen. MUSIC-algoritmit voidaan jakaa kahteen kategoriaan riippuen, miten dipolien suuntautumiset oletetaan olevan. Dipolit voivat olla joko kiinteästi suuntautuneita eli niiden suuntautuminen tiedetään etukäteen tai vapaasti suuntautuvia, jolloin niiden suuntausta ei tiedetä. \citep{Makela2018TruncatedLocalization}
+Dipolit aivoissa voidaan olettaa kiinnitetyiksi eli niiden sijainnit eivät muutu ajan suhteen. MUSIC-algoritmit voidaan jakaa kahteen kategoriaan riippuen, miten dipolien suuntautumiset oletetaan olevan. Dipolit voivat olla joko kiinteästi suuntautuneita eli niiden suuntautuminen tiedetään etukäteen tai vapaasti suuntautuvia, jolloin niiden suuntausta ei tiedetä. Kiinteän suuntautumisen MUSIC-algoritmia sanotaan myös skalaari-MUSIC:ksi (\textit{scalar MUSIC}) sekä vapaan suuntautumisen vektori-MUSIC:ksi (\textit{vector MUSIC}). \citep{Makela2018TruncatedLocalization}
 
--Tähän pitäisi kirjoittaa MUSICin peruskäsitteet
+Olkoon pisteessä \textbf{p} dipoli, jolla on momentti $\mathbf{q} = s\eta$, jossa $s$ on amplitudi ja $\eta$ on suuntaus. Tätä dipolia voidaan merkata \textbf{(p,q)}. Mittaussensorien saamaa lukemaa merkitään $\mathbf{l(p,q)}$, jota sanotaan dipolin topografiaksi. Dipolin amplitudi voidaan olettaa vakioksi joten lineaarisuuden vuoksi $\mathbf{l(p,q)} = \mathbf{l(p,s\eta)} = s\mathbf{l(p,\eta)}$.
 
-Aloitetaan esittelemällä kiinnitetyn orientaation MUSIC-algoritmi, jota kutsutaan myös nimellä skalaari-MUSIC \citep{Makela2018TruncatedLocalization}. 
+Muodostetaan johtokenttämatriisi (\textit{lead field matrix}) pisteeseen \textbf{p}:
 
-Olkoon pisteessä $\mathbf{p}$ dipoli, jolla on orientaatio $\eta$. Olkoon mittauksista saatu data-matriisi $\mathbf{Y}\in \mathbb{R}^{m\times N}$, jossa $\mathit{m}$ on mittaussensorien määrä ja $\mathit{N}$ mittausten lukumäärä. Matriisilla $\mathbf{Y}$ on muoto
+\begin{equation}
+    \mathbf{L(p) = [l(p,e_x),l(p,e_y),l(p,e_z)]}
+\end{equation}
+Tällöin topografia saa muodon $\mathbf{l(p},\eta)=\mathbf{L(p})\mathbf{\eta}(\mathbf{p})$.
+
+Olkoon mittauksista saatu data koottu matriisin $\mathbf{Y}\in \mathbb{R}^{m\times N}$, jossa \textit{m} on mittaussensorien määrä ja \textit{N} mittausten lukumäärä. Oletetaan dipolien lukumäärän olevan $n$. Tällöin matriisi $\mathbf{Y}$ voidaan kirjoittaa muodossa:
 
 \begin{equation}
     \mathbf{Y=AS+\epsilon},
 \end{equation}
-jossa $\mathbf{A =[l(p}_1,\eta_1),...,\mathbf{l(p}_n,\eta_n)]$ on sekoitusmatriisi, $\mathbf{S}$ ajankulkumatriisi ja $\mathbf{\epsilon}$ mittauskohinaa. Lähteen orientaatio on kiinnitetyn orientaation tapauksessa riippuvainen vain sen sijainnista eli $\mathbf{l(p},\eta)=\mathbf{L(p})\mathbf{\eta}(\mathbf{p})$, jossa $\mathbf{L(p) = [l(p,e_x),l(p,e_y),l(p,e_z)]}$ on johtokenttämatriisi (lead field matrix).
+jossa $\mathbf{A}\in \mathbb{R}^{m\times n}$ on sekoitusmatriisi, $\mathbf{S}\in \mathbb{R}^{n\times N}$ ajankulkumatriisi ja $\mathbf{\epsilon}$ mittauskohinaa.
+
+Sekoitusmatriisi \textbf{A} muodostetaan eri tavalla riippuen siitä, käytetäänkö skalaari- vai vektori-MUSIC -algoritmia. Skalaari-MUSIC:n tapauksessa $\mathbf{A = [l(p_1),...,l(p_n)]}$ ja vektori-MUSIC:n tapauksessa $\mathbf{A = [L(p_1),...,L(p_n)]}$.
 
 Data-avaruus $\text{span}(\mathbf{Y})$ jaetaan singulaariarvohajotelman avulla kahteen keskenään ortogonaaliseen aliavaruuteen, signaali-avaruuteen $\text{span}(\mathbf{A})$  ja kohina-avaruuteen $\text{span}(\mathbf{A^\bot})$ \citep{Mosher1999SourceMUSIC}. Olkoon matriisin \textbf{Y} singulaariarvohajotelma muotoa $\mathbf{Y = UDV}^T$ ja lähteiden määrä \textit{n}. Matriisin \textbf{D} diagonaalilla olevat \textit{n} ensimmäistä ominaisarvoa kuvaavat signaalia ja loput ominaisarvot kohinaa. Tällöin matriisin sarakkeet $\mathbf{U}(:,1:n)$ virittävät signaaliavaruuden eli $\text{span}(\mathbf{A}) = \mathbf{U}(:,1:n)$. \citep{Mosher1999SourceMUSIC, Makela2018TruncatedLocalization}
 
@@ -43,7 +50,7 @@ Olkoon approksimoitujen lähteiden määrä \~{n}. Projektio voidaan nyt muodost
 Pisteen $\mathbf{p}$ kuuluminen signaaliavaruuteen tarkistetaan projektio-operaattorin avulla. Pisteen $\mathbf{p}$ topografia $\mathbf{l(p)}$ lasketaan päämallin avulla. Topografia kuuluu signaaliavaruuteen, jos sen projektio signaaliavaruuteen on topografia itse. Toisin sanoen piste $\mathbf{p}$ on lähde, jos $\mathbf{P}_s\mathbf{l(p)} = \mathbf{l(p)}$. Tämä tarkoittaa sitä, että jos $\mathbf{l(p)}$ sijaitsee signaaliavaruudessa, sen normi ei muutu projektiossa eli $||\mathbf{P}_s\mathbf{l(p)}||=||\mathbf{l(p)}||$. Jos $\mathbf{l(p)}$ ei sijaitse signaaliavaruudessa, sen projektion normi on pienempi kuin $\mathbf{l(p)}$:n normi eli
 $||\mathbf{P}_s\mathbf{l(p)}||<||\mathbf{l(p)}||$. \citep{Makela2018TruncatedLocalization}
 
-Näistä saadaan muodostettua paikannusfunktio (localizer function) \citep{Makela2018TruncatedLocalization}, joka laskee jokaisen pisteen $\mathbf{p}$ kuulumisen signaaliavaruuteen
+Näistä saadaan muodostettua paikannusfunktio (\textit{localizer function}) \citep{Makela2018TruncatedLocalization}, joka laskee jokaisen pisteen $\mathbf{p}$ kuulumisen signaaliavaruuteen
 
 \begin{equation}
     \mathbf{\mu(p)} = \frac{||\mathbf{P}_s\mathbf{l(p)}||^2}{||\mathbf{l(p)}||^2} 
@@ -53,10 +60,8 @@ Näistä saadaan muodostettua paikannusfunktio (localizer function) \citep{Makel
      \end{cases}
 \end{equation}
 
-Vapaan orientaation tapauksessa jokaiselle pisteelle $\mathbf{p}$ määräytyy suuntaus $\mathbf{\eta}$ mittausdatan perusteella. Vapaan orientaation MUSIC-algoritmia kutsutaan myös nimellä vektori-MUSIC \citep{Makela2018TruncatedLocalization}. Vektori-MUSIC muodostetaan hyvin samalla tavalla kuin skalaari-MUSIC, mutta sen paikannusfunktio on erilainen
+Vapaan orientaation tapauksessa jokaiselle pisteelle $\mathbf{p}$ määräytyy suuntaus $\mathbf{\eta}$ mittausdatan perusteella. Vapaan orientaation MUSIC-algoritmia kutsutaan myös nimellä vektori-MUSIC (\textit{vector MUSIC}) \citep{Makela2018TruncatedLocalization}. Vektori-MUSIC muodostetaan hyvin samalla tavalla kuin skalaari-MUSIC, mutta sen paikannusfunktio on erilainen
 
 \begin{equation}
     \mathbf{\mu(p)} = \max_{||\eta||=1} \frac{||\mathbf{P}_s\mathbf{L(p)\eta}||^2}{||\mathbf{L(p)\eta}||^2}
 \end{equation}
-
-(jatkuu kunhan opin selittämään)

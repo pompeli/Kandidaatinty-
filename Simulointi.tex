@@ -1,27 +1,27 @@
 \section{MUSIC-algoritmin simulointi}
-Tässä kandidaattityössä käytettiin Matlab-ohjelmaa simuloimaan MUSIC-algoritmia ja sen eri versioita. Simulaatioita tehtiin yksinkertaisella pallomallilla sekä todellisten aivojen malleilla, jotka muodostettiin MRI-kuvantamisen avulla.
+Tässä kandidaattityössä käytettiin Matlab-ohjelmaa simuloimaan MUSIC-algoritmia ja sen eri versioita. Simulaatioita tehtiin yksinkertaisella pallomallilla sekä todellisten aivojen mallilla, jotka muodostettiin MRI-kuvantamisen avulla.
+
+MUSIC-algoritmia voidaan testata yksinkertaisella pallomallilla. Tässä mallissa elektrodit ja lähdepisteet sijotetaan pallokuoren yläpäähän ja sitten projisoidaan stereograafisen projektion avulla tasoon.
 
 
-
-\subsection{MUSIC}
-\begin{figure}[h]
-    \centering
-    \begin{minipage}{0.45\textwidth}
-        \centering
-        \includegraphics[width=1\textwidth]{MUSICfix.jpg}
-    \end{minipage}\hfill
-    \begin{minipage}{0.45\textwidth}
-        \centering
-        \includegraphics[width=1\textwidth]{MUSICfree.jpg} 
-    \end{minipage}
-    \caption{MUSIC-algoritmin simuloiminen pallomallin avulla Matlab-ohjelmalla. Punaiset pisteet ovat sattumanvaraisesti sijoitettuja lähteitä ja topografia on tehty MUSIC-algoritmin avulla. Vasemmanpuoleisessa kuvassa on skalaari-MUSIC ja oikeanpuoleisessa vektori-MUSIC. Molemmissa tapauksissa kohina on valkoista.}
-    \label{fig:MUSIC}
-\end{figure}
-
-Kuvasta \ref{fig:MUSIC} huomataan, että MUSIC vapaalla orientaatiolla saa aikaan suuria aktiivisuuden alueita, mikä vaikeuttaa lähteiden paikantamista.
 
 \clearpage
-\subsection{RAP-MUSIC}
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.38]{mfix.jpg}
+    \caption{MUSIC-algoritmin simulointi pallomallilla kiinnitetyllä orientaatiolla.}
+    \label{fig:mfix}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.4]{mfree.jpg}
+    \caption{MUSIC-algoritmin simulointi pallomallilla vapaalla orientaatiolla.}
+    \label{fig:mfree}
+\end{figure}
+
+Kuvista huomataan, että MUSIC vapaalla orientaatiolla saa aikaan suuria aktiivisuuden alueita, mikä vaikeuttaa lähteiden paikantamista.
+
 \begin{figure}[h]
     \centering
     \includegraphics[width=1\textwidth]{rap11.jpg}
@@ -29,4 +29,3 @@ Kuvasta \ref{fig:MUSIC} huomataan, että MUSIC vapaalla orientaatiolla saa aikaa
     \label{fig:RAP}
 \end{figure}
 
-\subsubsection{TRAP-MUSIC}

@@ -1,7 +1,8 @@
 \section{MUSIC-algoritmin simulointi}
 Tässä kandidaattityössä käytettiin Matlab-ohjelmaa simuloimaan MUSIC-algoritmia ja sen eri versioita. Simulaatioita tehtiin yksinkertaisella pallomallilla sekä todellisten aivojen mallilla, jotka muodostettiin MRI-kuvantamisen avulla. Apukoodit simulointiin on saatu Jukka Sarvakselta sekä Matti Stenroosilta.
 
-MUSIC-algoritmia voidaan testata yksinkertaisella pallomallilla. Tässä mallissa elektrodit ja lähdepisteet sijotetaan pallokuoren yläpäähän ja sitten projisoidaan stereograafisen projektion avulla tasoon.
+Pallomallissa pään osat mallinnetaan kolmena johdepallona. Uloin pallo kuvaa päänahkaa, seuraava kalloa ja sisin pallo aivoja ja sen pinta aivokuorta. Jokaisella pallolla on homogeeninen johtavuus. 
+Elektrodit sijoitetaan uloimman pallokuoren pinnalle ja lähdedipolit sisimmän pallokuoren pinnalle. Lähdepisteet voidaan projisoida tasolle yksikköympyrälle ja MUSIC-algoritmin avulla muodostetaan topografia paikannusfunktion arvoista.
 
 Kuvissa \ref{fig:mfix} ja \ref{fig:mfree} on simuloitu MUSIC-algoritmia sekä kiinnitetyllä että vapaalla orientaatiolla. Simuloinneissa kolme lähdedipolia sijoitettiin aivokuorelle, jotka on merkitty punaisina renkaina ja topografia on muodostettu MUSIC-algoritmin avulla.
 

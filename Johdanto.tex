@@ -4,7 +4,7 @@ Aivojen sähköistä aktiivisuutta voidaan seurata noninvasiivisesti elektroenke
 
 Lähteenpaikannuksen avulla yritetään saada selville aivoaktiivisuuden sijainti MEG:n tai EEG:n avulla saatujen mittausten avulla. Tällaista ulkoisesti saatujen mittausten avulla tehtävää lähteenpaikannusta sanotaan käänteisongelmaksi (\textit{inverse problem}) \citep[s. 2]{hansen2010meg}.
 
-Usean signaalin luokittelu (\textit{multiple signal classification, MUSIC}) on lähteenpaikannusalgoritmi, jossa mittausdata jaetaan keskenään ortogonaalisiin aliavaruuksiin, signaali- ja kohina-avaruuksiin \citep{Schmidt1986MultipleEstimation}. Tämän jälkeen tarkistetaan tietyn lähdepisteen kuuluminen signaaliavaruuteen ortogonaaliprojektion avulla \citep{Mosher1999SourceMUSIC}.
+Usean signaalin luokittelu (\textit{multiple signal classification, MUSIC}) \citep{Schmidt1986MultipleEstimation} on aliavaruuksien käyttöön perustuva lähteenpaikannusalgoritmi. Algoritmissa mittausdata jaetaan keskenään ortogonaalisiin aliavaruuksiin, signaali- ja kohina-avaruuksiin \citep{Schmidt1986MultipleEstimation, Mosher1999SourceMUSIC}. Tämän jälkeen tarkistetaan tietyn lähdepisteen kuuluminen signaaliavaruuteen ortogonaaliprojektion avulla \citep{Mosher1999SourceMUSIC}. Laskennallinen tehokkuus ja epäherkkyys kohinalle tekevät siitä 
 
 Tämän kandidaattityön tarkoituksena on esitellä MUSIC-algoritmi ja verrata sitä sen eri versioihin. MUSIC-algoritmia testataan simuloidulla datalla aika-alueella pallomallin avulla sekä oikean mittausdatan avulla reaalisten aivojen mallilla. Työssä esitellään myös lähteenpaikannusta mittausdatan taajuusalueella.
 

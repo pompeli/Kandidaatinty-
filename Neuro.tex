@@ -3,16 +3,13 @@
 \input{Dipoli.tex}
 
 \subsection{Aivojen sähkömagneettisten signaalien mittaaminen}
-MEG ja EEG ovat ei-invasiivisia aivokuvantamismenetelmiä, jotka perustuvat aivojen sähkömagneettisten signaalien mittaamiseen. Molemmat menetelmät mittaavat aivojen toimintaa aivojen ulkopuolelta.
 
-Sähkövirrat neuroneissa synnyttävät ympärilleen magneettikenttiä Maxwellin yhtälöiden mukaisesti. MEG mittaa heikkoja magneettikenttiä pään ulkopuolelta suprajohtavien kvantti-interferenssilaitteiden (\textit{superconducting quantum interference device, SQUID}) avulla, joita jäähdytetään nestemäisen heliumin avulla \citep{HariMEGprimer}.
+MEG ja EEG ovat ei-invasiivisia aivokuvantamismenetelmiä, jotka perustuvat neuronien toiminnasta syntyvien sähkömagneettisten signaalien mittaamiseen aivojen ulkopuolelta. Näiden menetelmien mittaamat signaalit kuvaavat suoraan aivojen sähköistä toimintaa \citep{Baillet2001ElectromagneticMapping}. EEG ja MEG kuvavat hyvällä aikaresoluutiolla mutta heikolla spatiaalisella resoluutiolla \citep{He2018ElectrophysiologicalDynamics}.
+
+Sähkövirrat neuroneissa synnyttävät ympärilleen magneettikenttiä Maxwellin yhtälöiden mukaisesti. MEG mittaa heikkoja magneettikenttiä pään ulkopuolelta suprajohtavien kvantti-interferenssilaitteiden (\textit{superconducting quantum interference device, SQUID}) avulla \citep{Hamalainen1993MagnetoencephalographytheoryBrain}. SQUID-sensoreita jäähdytetään nestemäisen heliumin avulla \citep[s. 6]{hansen2010meg}. 
 
 MEG:n avulla mitataan lähinnä aktivaatioita, jotka tapahtuvat aivokuoren uurteiden seinillä. Tämä johtuu siitä, ettei MEG pysty havaitsemaan lähteitä, jotka tuottavat pään pinnan suuntaista magneettikenttää. \citep{hansen2010meg} MEG on hyvin herkkä ulkopuolisille häiriöille, minkä takia MEG-laite yleensä sijoitetaan suojahuoneeseen, jonne ulkopuoliset magneettikentät eivät pääse sisälle. Myös, esimerkiksi, silmien räpäyttäminen ja sydämen lyönti aiheuttavat häiriötä mittauksessa. \citep{Hamalainen1993MagnetoencephalographytheoryBrain}
 
 EEG mittaa aivojen aktiivisuutta päänahalle asetettujen elektrodien avulla. Nämä elektrodit mittaavat potentiaalieroja tiettyyn vertailuelektrodiin verrattuna. \citep{Michel2004EEGImaging} Toisin kuin MEG:n tapauksessa, EEG:n mittaamiin sähköisiin potentiaalieroihin pään pinnalla vaikuttavat kaikki sähköiset virrat \citep{HariMEGprimer}. EEG on MEG:tä edullisempi vaihtoehto aivojen tutkimiseen ja sitä voidaan käyttää yhdessä muiden kuvantamismenetelmien, kuten transkraniaalisen magneettistimulaation (TMS), kanssa \citep[s. 11]{HariMEGprimer}. 
 
-\subsection{Aivotutkimuksen haasteet}
-Jos aivojen ja pään geometriset mitat sekä johtavuudet tiedetään tarkasti, voidaan tunnetun virtadipolin aiheuttama potentiaali tai magneettikenttä pään ulkopuolella laskea tarkasti. Tätä Maxwellin yhtälöiden avulla tehhtävää ongelmanratkaisua sanotaan suoraksi ongelmaksi (\textit{forward problem}). \citep{Hamalainen1993MagnetoencephalographytheoryBrain}
-
-MEG:n ja EEG:n mittausten avulla tehtävä lähdepaikannus on käänteisongelma. Neuromagneettista toimintaa voidaan mitata MEG:n ja EEG:n avulla ainoastaan aivokuorelta, mikä johtaa siihen, ettei lähteen sijainnille saada yksikäsitteistä ratkaisua. Tämän vuoksi joudutaan rajoittamaan mahdollisia lähderatkaisuja \citep[s. 2]{hansen2010meg}.
 

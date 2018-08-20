@@ -8,15 +8,15 @@ Olkoon matriisi $\mathbf{A}\in \mathbb{R}^{m\times n}$, jonka rivien lukumäär�
 
 Matriisin \textbf{A} aste eli $\text{rank}(\textbf{A})$ kuvaa matriisin lineaarisesti riippumattomien sarake- tai rivivektoreiden lukumäärää. Matriisi \textbf{A} on kääntyvä eli sillä on käänteismatriisi $\mathbf{A}^{-1}$, jos matriisin aste on yhtä kuin sen rivien tai sarakkeiden määrä eli $\text{rank}(\textbf{A})=m=n$.
 
-Singulaariarvohajotelman avulla matriisi \textbf{A} voidaan esittää sen diagonaalimatriisin \textbf{D} sekä unitaaristen matriisien \textbf{U} ja \textbf{V} avulla
+Singulaariarvohajotelman avulla matriisi \textbf{A} voidaan esittää diagonaalimatriisin \textbf{D} sekä ortogonaalisten matriisien \textbf{U} ja \textbf{V} avulla:
 
 \begin{equation}
     \mathbf{A = UDV^T,}
     \label{eq:svd}
 \end{equation}
-jossa matriisi \textbf{D} sisältää matriisin \textbf{A} ominaisarvot. Matriisi \textbf{U} muodostuu matriisin \textbf{A} vasemmanpuoleisista ominaisvektoreista ja \textbf{V} vastaavasti oikeanpuoleisista ominaisvektoreista. 
+jossa matriisi \textbf{D} sisältää matriisin \textbf{A} singulaariarvot.
 
-Ominaisarvoja $d_i$ on matriisin $\mathbf{D}$ diagonaalilla yhtä monta, kuin matriisilla $\mathbf{A}$ on lineaarisesti riippumattomia sarakkeita. Toisin sanoen ominaisarvojen joukko on $\{d_1,...,d_r\}$, jossa $r = \text{rank}(\mathbf{A})$. Loput luvut matriisin \textbf{D} diagonaalilla ovat nollia ja singulaariarvohajotelma voidaan esittää matriisitulon avulla 
+Singulaariarvoja $d_i$ on matriisin $\mathbf{D}$ diagonaalilla yhtä monta, kuin matriisilla $\mathbf{A}$ on lineaarisesti riippumattomia sarakkeita. Toisin sanoen singulaariarvojen joukko on $\{d_1,...,d_r\}$, jossa $r = \text{rank}(\mathbf{A})$. Loput luvut matriisin \textbf{D} diagonaalilla ovat nollia ja singulaariarvohajotelma voidaan esittää matriisitulon avulla: 
 
 \begin{equation}
     \mathbf{A} = \mathbf{U}(:,1:r)\mathbf{D}(1:r,1:r)\mathbf{V}(:,1:r)^T
@@ -24,32 +24,32 @@ Ominaisarvoja $d_i$ on matriisin $\mathbf{D}$ diagonaalilla yhtä monta, kuin ma
 \end{equation}
 
 
-Pseudokäänteismatriisi $\mathbf{A^{\dagger}}$ on yleistys matriisin käänteismatriisille. Tämä joudutaan muodostamaan silloin, kun matriisi $\mathbf{A}$ ei ole kääntyvä. Pseudokäänteismatriisi saadaan muodostettua singulaariarvohajotelman avulla
+Pseudokäänteismatriisi $\mathbf{A^{\dagger}}$ on yleistys matriisin käänteismatriisille. Tämä joudutaan muodostamaan silloin, kun matriisi $\mathbf{A}$ ei ole kääntyvä. Pseudokäänteismatriisi saadaan muodostettua singulaariarvohajotelman avulla:
 
 \begin{equation}
     \mathbf{A^{\dagger} = VD^{\dagger}U^T},
 \end{equation}
-jossa \textbf{U} ja \textbf{V} ovat kaavasta \ref{eq:svd} ja $\mathbf{D}^{\dagger}$ sisältää matriisin \textbf{A} ominaisarvojen käänteisluvut.
+jossa \textbf{U} ja \textbf{V} ovat kaavasta \ref{eq:svd} ja $\mathbf{D}^{\dagger}$ sisältää matriisin \textbf{A} singulaariarvojen käänteisluvut.
 
-Ortogonaaliprojektio aliavaruuteen $\text{span}(\mathbf{A})$ on 
+Ortogonaaliprojektio aliavaruuteen $\text{span}(\mathbf{A})$: 
 
 \begin{equation}
     \mathbf{P}_{\text{span}(\mathbf{A})}= \mathbf{AA}^{\dagger}
 \end{equation}
 
-Vektorit $\{\mathbf{a_1,...,a_n}\}$ muodostavat ortonormaalin kannan aliavaruudelle $\mathbb{V}$. Olkoon $\mathbf{A = [\mathbf{a_1,...,a_n}]}$. Tällöin ortogonaaliprojektio $\mathbf{P}: \mathbb{R}^m \to \mathbb{V}$ on
+Vektorit $\{\mathbf{a_1,...,a_n}\}$ muodostavat ortonormaalin kannan aliavaruudelle $\mathbb{V}$. Olkoon $\mathbf{A = [\mathbf{a_1,...,a_n}]}$. Tällöin ortogonaaliprojektio aliavaruuteen $\mathbb{V}$:
 
 \begin{equation}
     \mathbf{P}_{\mathbb{V}} = \mathbf{AA}^T
 \end{equation}
 
-ja tämän ortogonaaliseen aliavaruuteen $\mathbb{V}^{\bot}$ on
+ja tämän ortogonaaliseen aliavaruuteen $\mathbb{V}^{\bot}$:
 
 \begin{equation}
     \mathbf{P}_{\mathbb{V}^{\bot}}=\mathbf{I}-\mathbf{AA}^T
 \end{equation}
 
-Ortogonaalisen matriisin sarakkeet ja rivit ovat ortonormaaleja (lähde?). Täten ortogonaalisen matriisin \textbf{U} sarakkeet $\mathbf{U}(:,1),...,\mathbf{U}(:,r)$ muodostavat ortonormaalin kannan matriisille \textbf{A} eli $\text{span}(\mathbf{A}) = \mathbf{U}(:,1:r)$ \citep{Uusitalo1997Signal-spaceComponents}. Projektio aliavaruuteen $\text{span}(\mathbf{A})$ voidaan nyt muodostaa singulaariarvohajotelman avulla
+Ortogonaalisen matriisin sarakkeet ja rivit ovat ortonormaaleja. Täten ortogonaalisen matriisin \textbf{U} sarakkeet $\mathbf{U}(:,1),...,\mathbf{U}(:,r)$ muodostavat ortonormaalin kannan matriisille \textbf{A} eli $\text{span}(\mathbf{A}) = \mathbf{U}(:,1:r)$ \citep{Uusitalo1997Signal-spaceComponents}. Projektio aliavaruuteen $\text{span}(\mathbf{A})$ voidaan nyt muodostaa singulaariarvohajotelman avulla:
 
 \begin{equation}
     \mathbf{P}_{\text{span}(A)} = \mathbf{U}(:,1:r)\mathbf{U}(:,1:r)^T,

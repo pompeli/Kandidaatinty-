@@ -1,14 +1,10 @@
 \section{Tulokset}
-Tässä kandidaattityössä käytettiin Matlab-ohjelmaa simuloimaan MUSIC-algoritmia ja sen eri versioita. Simulaatioita tehtiin yksinkertaisella pallomallilla sekä todellisten aivojen mallilla. Apukoodit simulointiin on saatu Jukka Sarvakselta sekä Matti Stenroosilta.
 
-Pallomallissa pään osat mallinnetaan kolmena johdepallona. Uloin pallo kuvaa päänahkaa, seuraava kalloa ja sisin pallo aivoja ja sen pinta aivokuorta. Jokaisella pallolla on homogeeninen johtavuus. 
-Elektrodit sijoitetaan uloimman pallokuoren pinnalle ja lähdedipolit sisimmän pallokuoren pinnalle. Lähdepisteet voidaan projisoida tasolle yksikköympyrälle ja MUSIC-algoritmin avulla muodostetaan topografia paikannusfunktion arvoista. Aivojen ja päänahan johtavuuksiksi valittiin 0,33 ja kallon johtavuudeksi 0,0042.
-
-Kuvissa \ref{fig:mfix} ja \ref{fig:mfree} on simuloitu MUSIC-algoritmia sekä kiinnitetyllä että vapaalla orientaatiolla. Simuloinneissa kolme lähdedipolia sijoitettiin aivokuorelle, jotka on merkitty punaisina renkaina ja topografia on muodostettu MUSIC-algoritmin avulla.
+Kuvissa \ref{fig:mfix} ja \ref{fig:mfree} on simuloitu MUSIC-algoritmia sekä kiinnitetyllä että vapaalla orientaatiolla. Simuloinneissa kolme lähdedipolia sijoitettiin aivokuorelle, jotka on merkitty punaisina ympyröinä ja topografia on muodostettu MUSIC-algoritmin paikannusfunktion arvoista.
 
 Kuvissa \ref{fig:RAPfix} ja \ref{fig:RAPfree} on simuloitu RAP-MUSIC- algoritmia kiinnitetyllä ja vapaalla orientaatiolla. Kuvissa musta rasti kuvaa paikannusfunktion maksimiarvon paikkaa ja löydetyt dipolit merkataan punaisella neliöllä.
 
-Kuvista huomataan, että MUSIC vapaalla orientaatiolla saa aikaan suuria aktiivisuuden alueita, mikä vaikeuttaa lähteiden paikantamista.
+Kuvista huomataan, että MUSIC vapaalla orientaatiolla saa aikaan suurempia aktiivisuuden alueita kuin kiinnitetyllä orientaatiolla, mikä vaikeuttaa lähteiden tarkkaa paikantamista. 
 
 Tavallisen MUSIC-algoritmin yksi ongelmista on oikeiden lähteiden erottaminen vääristä \citep{Mosher1998RecursiveLocalization}. Lisäksi MUSIC-algoritmilla on vaikeuksia löytää synkronoituja lähteitä \citep{Mosher1999SourceMUSIC}. RAP- sekä TRAP-MUSIC-algoritmeilla vaikeuksia löytää hyvin lähellä toisiaan olevia dipoleita. Löydettyä lähdettä projisoidessa pois häviää myös löytämättä jääneen lähteen komponentteja.
 
@@ -22,7 +18,7 @@ Tavallisen MUSIC-algoritmin yksi ongelmista on oikeiden lähteiden erottaminen v
 
 \begin{figure}[h]
     \centering
-    \includegraphics[scale=0.4]{mfree.jpg}
+    \includegraphics[scale=0.41]{mfree.jpg}
     \caption{MUSIC-algoritmin simulointi pallomallilla vapaalla orientaatiolla.}
     \label{fig:mfree}
 \end{figure}

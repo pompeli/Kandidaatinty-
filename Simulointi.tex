@@ -1,0 +1,60 @@
+\section{Simulointi}
+Tässä kandidaattityössä käytettiin Matlab-ohjelmaa simuloimaan MUSIC-algoritmia ja sen eri versioita. Simulaatioita tehtiin yksinkertaisella pallomallilla sekä todellisten aivojen mallilla. Oikeiden aivojen mallinnukseen käytettiin kolmioista muodostuvaa verkkoa. Apufunktiot pallomallilla simulointiin on saatu Jukka Sarvakselta. Koodit ja päämalliverkot oikeiden aivojen mallinnukseen on saatu Matti Stenroosilta.
+
+Pallomallissa pään osat mallinnetaan kolmena johdepallona. Uloin pallo kuvaa päänahkaa, seuraava kalloa ja sisin pallo aivoja ja sen pinta aivokuorta. Jokaisella pallolla on homogeeninen johtavuus. Pallomallissa käytetyt johtavuudet ja säteet ovat merkittyinä alla oleviin taulukoihin \ref{table:johtavuus} ja \ref{table:sateet}.
+
+\begin{table}[h]
+\begin{minipage}{0.5\textwidth}
+    \caption{Johtavuudet}
+    \begin{center}
+        \begin{tabular}{|c|c|}
+            \hline
+            & Johtavuudet ($\frac{1}{\Omega m}$)\\ \hline
+            Päänahka & 0,33 \\
+            Kallo & 0,0042 \\
+            Aivot & 0,33 \\
+            \hline
+        
+        \end{tabular}
+    \end{center}
+    \label{table:johtavuus}
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+    \caption{Säteet}
+    \begin{center}
+        \begin{tabular}{|c|c|}
+            \hline
+            & Säteet (mm)\\ \hline
+            Päänahka & 88 \\
+            Kallon ulkopinta & 85 \\
+            Kallon sisäpinta & 81 \\
+            Aivokuori & 76 \\
+            \hline
+        \end{tabular}
+    \end{center}
+    \label{table:sateet}
+\end{minipage}
+\end{table}
+
+Pallomallissa oletetaan, että lähteet sijaitsevat aivokuorella. Elektrodit sijoitetaan uloimman pallokuoren ja lähdedipolit sisimmän pallokuoren pinnalle. Lähdepisteet voidaan projisoida tasoon yksikköympyrälle ja MUSIC-algoritmin avulla muodostetaan kuva paikannusfunktion arvoista topografiana.
+
+\begin{figure}[ht]
+    \begin{minipage}{0.5\textwidth}
+        \centering
+        \includegraphics[width=0.9\textwidth]{aivot2.jpg}
+    \end{minipage}
+    \begin{minipage}{0.5\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{aivot.jpg}
+    \end{minipage}
+    \caption{Vasemmalla malli aivoista ja oikealla uurteet puhallettuna auki.}
+    \label{fig:esim}
+\end{figure}
+
+\clearpage
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.7\textwidth]{esim3.jpg}
+    \caption{Esimerkki MUSIC-algoritmin avulla piirretystä topografiakuvasta. Lähdepisteet ovat merkittyinä punaisina ympyröinä ja paikannusfunktion tasa-arvokäyrissä keltainen on suuri arvo.}
+    \label{fig:esim}
+\end{figure}

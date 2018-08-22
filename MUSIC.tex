@@ -43,7 +43,7 @@ Lähteiden määrää ei aina tiedetä, joten se täytyy approksimoida. Todellis
 \end{figure}
 
 
-Olkoon approksimoitujen lähteiden määrä \~n. Projektio voidaan nyt muodostaa approksimoitujen lähteiden määrän mukaan $\mathbf{P}_{s}=\mathbf{U}(:,1:\~n)\mathbf{U}(:,1:\~n)^T$, jolloin \~n jälkeiset singulaarivektorit kuvaavat kohinaa.
+Olkoon approksimoitujen lähteiden määrä $\Tilde{n}$. Projektio voidaan nyt muodostaa approksimoitujen lähteiden määrän mukaan $\mathbf{P}_{s}=\mathbf{U}(:,1:\Tilde{n})\mathbf{U}(:,1:\Tilde{n})^T$, jolloin $\Tilde{n}$ jälkeiset singulaarivektorit kuvaavat kohinaa.
 
 Pisteen $\mathbf{p}$ kuuluminen signaaliavaruuteen tarkistetaan projektio-operaattorin avulla. Pisteen $\mathbf{p}$ topografia $\mathbf{l(p)}$ lasketaan päämallin avulla. Topografia kuuluu signaaliavaruuteen, jos sen projektio signaaliavaruuteen on topografia itse. Toisin sanoen piste $\mathbf{p}$ on lähde, jos $\mathbf{P}_s\mathbf{l(p)} = \mathbf{l(p)}$. Jos $\mathbf{l(p)}$ sijaitsee signaaliavaruudessa, sen normi ei muutu projektiossa eli $||\mathbf{P}_s\mathbf{l(p)}||=||\mathbf{l(p)}||$. Jos $\mathbf{l(p)}$ ei sijaitse signaaliavaruudessa, sen projektion normi on pienempi kuin $\mathbf{l(p)}$:n normi eli
 $||\mathbf{P}_s\mathbf{l(p)}||<||\mathbf{l(p)}||$. \citep{Makela2018TruncatedLocalization}

@@ -1,11 +1,18 @@
 \subsection{Aivojen sähköinen toiminta}
 Neuroni eli hermosolu vastaa aivojen sähköisen viestinnän kuljetuksesta hermoimpulssien välityksellä. Hermoimpulssia voidaan kuvata sähkövirtana, joka kulkeutuu neuronin sisällä. Tämä sähkövirta synnyttää neuronin ulkopuolelle sähkökentän joka taas synnyttää ympärilleen Maxwellin yhtälöiden mukaisesti magneettikentän. 
 
-Aivojen korteksilla olevat pyramidisolut ovat kohtisuorasti suuntautuneita korteksin pintaa vastaan ja niiden synkronoitu aktivoituminen synnyttää pään ulkopuolella havaittavia signaaleja \citep{He2018ElectrophysiologicalDynamics}. Pyramidisolujen toimintaa voidaan mallintaa virtadipoleina \citep[s. 10]{HariMEGprimer}. 
+Aivojen korteksilla olevat pyramidisolut ovat kohtisuorasti suuntautuneita korteksin pintaa vastaan ja niiden synkronoitu aktivoituminen synnyttää pään ulkopuolella havaittavia signaaleja \citep{He2018ElectrophysiologicalDynamics}. Pyramidisolujen toimintaa voidaan mallintaa virtadipoleina \citep[s. 10]{HariMEGprimer}. Yksittäisen neuronin aktivaatio ei riitä havaittavaksi EEG:n tai MEG:n avulla \citep{He2018ElectrophysiologicalDynamics}.
 
-Aktiivuus aivoissa voidaan ajatella syntyvän päävirrasta (\textit{primary current}) $\mathbf{J^p}$ \citep{Baillet2001ElectromagneticMapping}. Virtadipolia \textbf{Q} voidaan approksimoida pistemäisenä päävirtana \citep{Hamalainen1993MagnetoencephalographytheoryBrain}. Paikassa $\mathbf{r'}$ aktivoituneen alueen aiheuttamaa päävirtaa paikassa \textbf{r} voidaan mallintaa virtadipolin \textbf{Q} avulla:
+Aktiivuus aivoissa voidaan ajatella syntyvän päävirrasta (\textit{primary current}) $\mathbf{J^p}$ \citep{Baillet2001ElectromagneticMapping}. Virtadipolia \textbf{Q} voidaan approksimoida pistemäisenä päävirtana, joka kulkee lähteestä nieluun \citep{Hamalainen1993MagnetoencephalographytheoryBrain}. Paikassa $\mathbf{r'}$ aktivoituneen alueen aiheuttamaa päävirtaa paikassa \textbf{r} voidaan mallintaa virtadipolin \textbf{Q} avulla:
 \begin{equation}
     \mathbf{J^p(r) = Q\delta (r-r')},
 \end{equation}
 jossa $\delta (\mathbf{r-r'})$ on Diracin deltafunktio \citep{Baillet2001ElectromagneticMapping}. 
 
+Päävirta synnyttää ympärillä olevaan johtavaan aineeseen varausta kuljettavan paluuvirran $\mathbf{J^v}$. Kokonaisvarausjakauma \textbf{J} voidaan esittää päävirran ja paluuvirran summana:
+
+\begin{equation}
+    \mathbf{J(r)} = \mathbf{J^p(r)} + \mathbf{J^v(r)}.
+\end{equation}
+\citep{Baillet2001ElectromagneticMapping}
+%tähän pitää saada jotain lisää

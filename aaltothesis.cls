@@ -1019,8 +1019,9 @@
 }%
 %
 \newcommand*{\thesisbibliography}{%
-\phantomsection%
+    \phantomsection%
   \addcontentsline{toc}{section}{\refname}%
+  \bibliography{Lahteet}
 }
 %
 \AtBeginDocument{\pagestyle{myheadings}}%

@@ -1,0 +1,24 @@
+\subsection{MUSIC-algoritmi taajuusalueella}
+MUSIC-algoritmia voidaan käyttää myös kompleksisten arvojen analyysiin. Tällöin itse MUSIC-algoritmiin ei tule muutoksia, vain datan käsittely muuttuu.
+
+Siirtyminen aika-alueelta taajuusalueelle tapahtuu Fourier-muunnoksen avulla. Diskreetin Fourier-muunnoksen (DFT) avulla voidaan suodattaa tiettyjä taajuuksia pois ja tarkastella signaaleja vain tietyllä taajuusvälillä. Tässä esitellään päästökaistan muodostamista.
+
+P-periodisen signaalin $u(t)$ DFT:
+\begin{equation}
+    U(f) =  \sum_{t=t_0}^{t_0+P-1}u(t)e^{-i\frac{2\pi}{P}ft},
+\end{equation}
+jossa $U(f)$ on Fourier-muunnettu signaali ja $m$ on jokin kokonaisluku. Fourier-muunnettu signaali $U(f)$ saadaan takaisin alkuperäiseen muotoon kaavalla:
+
+\begin{equation}
+    u(t) = \frac{1}{P}\sum_{f=t_0}^{t_0+P-1}U(f)e^{i\frac{2\pi}{P}ft},
+\end{equation}
+jossa $n$ on kokonaisluku. $u(t)$ ja $U(f)$ ovat molemmat P-periodisia, joten  
+ 
+MUSIC-algoritmilla voidaan löytää tietyllä taajudella olevia lähteitä. Tällöin mittausaika $t_1,...,t_M$ jaetaan peräkkäisiin epookkeihin, jotka ovat saman pituisia ja osittain päällekkäin. Olkoon epookkien pituus $P$, päällekkäisten indeksien lukumäärä $L$ ja epookkien lukumäärä $N_e$.
+
+Näytteitä signaalista otetaan tietyllä näytteenottotaajuudella $f_s$. Tämän käänteisluku on näytteiden aikaväli $d$. Epookkien pituudeksi valitaan $P = 2N+1$ siten, että $P$ on mahdollisimman pieni pariton luku. Tämä saadaan valitsemalla esimerkiksi $N = 500$.
+
+Olkoon etsittävä taajuus $f$ ja tätä vastaava frekvenssialueen datamatriisi $\mathbf{Z} \in \mathbb{R}^{m\times N_e}$. Taajuusalueen analyysiä varten ajankulkumatriisi \textbf{S} muuttuu frekvenssikulkumatriisiksi \textbf{R}, joka kuvastaa tietyllä taajuudella olevien lähteiden amplitudeja. Frekvenssialueen datamatriisille saadaan muoto:
+\begin{equation}
+    \mathbf{Z = AR+\text{\boldmath$\tau$}}
+\end{equation}

@@ -1,29 +1,30 @@
 \subsection{TRAP-MUSIC}
-RAP-dilemman poistamiseksi \cite{Makela2018TruncatedLocalization} kehittivät typistetyn RAP-MUSIC-algoritmin (\textit{truncated RAP-MUSIC, TRAP-MUSIC}), joka poistaa topografiaa löydettyjen lähteiden ympäriltä. RAP-dilemman poistamiseksi vaaditaan muutos RAP-MUSIC-algoritmin projektiolausekkeeseen. 
+RAP-dilemman poistamiseksi \cite{Makela2018TruncatedLocalization} kehittivät typistetyn RAP-MUSIC-algoritmin (\textit{truncated RAP-MUSIC, TRAP-MUSIC}), joka poistaa RAP-MUSIC:ssa havaittavan ongelman. RAP-dilemman poistamiseksi vaaditaan muutos RAP-MUSIC:n projektiolausekkeeseen. 
+
 Olkoon lähteiden määrä signaaliavaruudessa yhteensä \textit{n}. Kun lähteitä on löydetty \textit{k} kappaletta, jäljellä olevien lähteiden määrä signaaliavaruudessa on $n-k$. TRAP-MUSIC-algoritmissa projisointi muodostetaan vain jäljellä olevien lähteiden muodostamaan signaaliavaruuteen eli signaaliavaruuden dimensiota typistetään vastaamaan $n-k$ lähteiden virittämää signaaliavaruutta. \citep{Makela2018TruncatedLocalization}.
 
 Iteraatiokierroksen $k-1$ jälkeen signaaliavaruuteen jää $n-k+1$ lähdettä. Täten kierroksella \textit{k} signaaliavaruutta voidaan typistää muuttamalla projektio-operaattoria:
 
 \begin{equation}
-    \mathbf{P}_{\text{TRAP}} = \mathbf{U}_k(1:n-k+1)\mathbf{U}_k(1:n-k+1)^T
+    \mathbf{P}_{\text{TRAP}} = \mathbf{U}_k(1:n-k+1)\mathbf{U}_k(1:n-k+1)^T,
 \end{equation}
+jossa $\mathbf{U}_k$ on kuten yhtälössä \ref{eq:rap}.
 
-Muuten TRAP-MUSIC vastaa täysin RAP-MUSIC-algoritmia. TRAP-MUSIC:n paikannusfunktio kiinnitetyllä orientaatiolla:
+Muuten TRAP-MUSIC vastaa täysin RAP-MUSIC-algoritmia. TRAP-MUSIC:n paikannusfunktio kiinteällä orientaatiolla on
 \begin{equation}
     \mathbf{\mu_k(p)} = \frac{||\mathbf{P}_{\text{TRAP}}\mathbf{Q}_k\mathbf{l(p)}||^2}{||\mathbf{Q}_k\mathbf{l(p)}||^2}
     \begin{cases}
-    =1\text{, jos p on lähde}\\
-    <1\text{, jos p ei ole lähde}
+    =1\text{, jos $\mathbf{p}$ on lähde}\\
+    <1\text{, jos $\mathbf{p}$ ei ole lähde}
      \end{cases}
      \label{eq:TRAPfix}
 \end{equation}
-
-Vapaalla orientaatiolla:
+ja vapaalla orientaatiolla
 \begin{equation}
     \mathbf{\mu_k(p)} = \max_{||\eta||=1} \frac{||\mathbf{P}_{\text{TRAP}}\mathbf{Q}_k\mathbf{L(p)\eta}||^2}{||\mathbf{Q}_k\mathbf{L(p)\eta}||^2}
     \begin{cases}
-    =1\text{, jos p on lähde}\\
-    <1\text{, jos p ei ole lähde}
+    =1\text{, jos $\mathbf{p}$ on lähde}\\
+    <1\text{, jos $\mathbf{p}$ ei ole lähde}
      \end{cases}
      \label{eq:TRAPfree}
 \end{equation}

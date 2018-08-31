@@ -1,0 +1,17 @@
+\subsection{MUSIC-algoritmi kompleksialueella}
+
+MUSIC-algoritmilla voidaan käsitellä reaalisten arvojen lisäksi myös kompleksisia. Käytännössä mikään alkuperäisessä algoritmissa ei muutu siirryttäessä käsittelemään kompleksisia lukuja.
+
+Jos ajankulkumatriisi $\mathbf{S}\in \mathbb{C}^{n\times M}$ on kompleksinen, saadaan datamatriisille \textbf{Y} yhtälö:
+\begin{equation}
+    \mathbf{Y = AS}+\text{\boldmath{$\varepsilon$}},
+\end{equation}
+jossa \textbf{Y}, \textbf{S} ja $\text{\boldmath{$\varepsilon$}}$ ovat kompleksisia mutta \textbf{A} säilyy reaalisena. Tästä voidaan muodostaa singulaariarvohajotelma:
+\begin{equation}
+    \mathbf{Y = UDV}^H,
+\end{equation}
+jossa $\mathbf{V}^H$ on matriisin \textbf{V} konjugaattitranspoosi. Olkoon $\mathbf{A}\in \mathbb{R}^{m\times n}$ ja $\text{rank}(\mathbf{A})=n$. Arvioidaan lähteiden määrän olevan $\Tilde{n}$. Tällöin voimme muodostaa ortogonaaliprojektion signaaliavaruuteen:
+\begin{equation}
+    \mathbf{P_s = U}(:,1:\Tilde{n})\mathbf{U}(:,1:\Tilde{n})^H.
+\end{equation}
+Tästä voimme muodostaa paikannusfunktiot kiinteän ja vapaan orientaation MUSIC-algoritmeille samaan tapaan kuin reaaliarvoisille. 

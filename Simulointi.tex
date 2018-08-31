@@ -40,15 +40,4 @@ Pallomallissa pään osat mallinnetaan kolmena johdepallona. Uloin pallo kuvaa p
 
 Pallomallissa oletetaan, että lähteet sijaitsevat aivokuorella. Elektrodit sijoitetaan uloimman pallokuoren ja lähdedipolit sisimmän pallokuoren pinnalle. Lähdepisteet voidaan projisoida tasoon yksikköympyrälle ja MUSIC-algoritmin avulla muodostetaan kuva paikannusfunktion arvoista topografiana.
 
-\begin{figure}[hb]
-    \begin{minipage}{0.5\textwidth}
-        \centering
-        \includegraphics[width=0.9\textwidth]{aivot2.jpg}
-    \end{minipage}
-    \begin{minipage}{0.5\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{aivot.jpg}
-    \end{minipage}
-    \caption{Vasemmalla malli aivoista ja oikealla uurteet puhallettuna auki.}
-    \label{fig:aivot}
-\end{figure}
+Taajuusalueen analyysiä varten etsittiin kiinteän orientaation MUSIC-algoritmilla simuloidusta datasta tietyllä taajuudella olevia signaalinlähteitä. Etsittäväksi taajuudeksi valittiin 12 Hz ja näytteenottotaajuudeksi 1000 Hz. MATLAB-ohjelmalla kompleksisilla arvoilla laskettaessa tehdään pieni muutos algoritmin paikannusfunktioon. 
